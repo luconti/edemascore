@@ -14,43 +14,39 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Input(
-                  color: Colors.blue,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Input(
-                  color: Colors.green,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Input(
-                  color: Colors.green,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Input(
-                  color: Colors.green,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Input(
-                  color: Colors.green,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const [
+            Input(
+              color: Colors.blue,
             ),
-          );
-        },
+            SizedBox(
+              height: 5,
+            ),
+            Input(
+              color: Colors.green,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Input(
+              color: Colors.green,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Input(
+              color: Colors.green,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Input(
+              color: Colors.green,
+            ),
+          ],
+        ),
       ),
     );
   }
