@@ -14,40 +14,53 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
-            Input(
-              color: Colors.blue,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Input(
-              color: Colors.green,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Input(
-              color: Colors.green,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Input(
-              color: Colors.green,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Input(
-              color: Colors.green,
-            ),
-          ],
-        ),
-      ),
+      body: LayoutBuilder(builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: Row(
+            children: [
+              Flexible(flex: 1, child: Container()),
+              Flexible(
+                flex: calculateFlex(constraints),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Input(
+                      color: Colors.blue,
+                    ),
+                    Divider(),
+                    Input(
+                      color: Colors.green,
+                    ),
+                    Divider(),
+                    Input(
+                      color: Colors.green,
+                    ),
+                    Divider(),
+                    Input(
+                      color: Colors.green,
+                    ),
+                    Divider(),
+                    Input(
+                      color: Colors.green,
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(flex: 1, child: Container()),
+            ],
+          ),
+        );
+      }),
     );
   }
+}
+
+int calculateFlex(BoxConstraints constraints) {
+  return constraints.maxWidth < 400
+      ? 14
+      : constraints.maxWidth < 600
+          ? 10
+          : constraints.maxWidth < 1000
+              ? 6
+              : 2;
 }

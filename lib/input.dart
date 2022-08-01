@@ -14,9 +14,7 @@ class Input extends StatelessWidget {
           builder: (BuildContext context, BoxConstraints constraints) {
         return Row(
           children: [
-            Flexible(flex: 1, child: Container()),
             Flexible(
-              flex: calculateFlex(constraints),
               child: Container(
                 color: Colors.yellow,
                 alignment: Alignment.center,
@@ -24,17 +22,28 @@ class Input extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text("Title"),
+                  children: [
+                    Text(
+                      "Effacement",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
                     Text(
                       "descriptiondescriptiondescriptiondescriptiondescriptiondescription",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black.withOpacity(0.5),
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
             Flexible(
-              flex: calculateFlex(constraints),
               child: Container(
                 color: Colors.yellow[50],
                 alignment: Alignment.center,
@@ -75,20 +84,9 @@ class Input extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(flex: 1, child: Container()),
           ],
         );
       }),
     );
   }
-}
-
-int calculateFlex(BoxConstraints constraints) {
-  return constraints.maxWidth < 400
-      ? 7
-      : constraints.maxWidth < 600
-          ? 5
-          : constraints.maxWidth < 1000
-              ? 3
-              : 1;
 }
