@@ -7,25 +7,39 @@ class ComponentOptionInput {
   ComponentOptionInput({required this.title, required this.score});
 }
 
-// ignore: must_be_immutable
-class ComponentOption extends StatelessWidget {
-  ComponentOption({
+class ComponentOption extends StatefulWidget {
+  const ComponentOption({
     Key? key,
     required this.input,
+    required this.index,
     required this.isSelected,
-    this.isTop = false,
-    this.isBottom = false,
+    required this.callback,
+    this.isLast = false,
   }) : super(key: key);
 
   final ComponentOptionInput input;
+  final int index;
   final bool isSelected;
-  bool isTop;
-  bool isBottom;
+  final void Function(int index) callback;
+  final bool isLast;
+
+  @override
+  State<StatefulWidget> createState() => ComponentOptionState();
+}
+
+// ignore: must_be_immutable
+class ComponentOptionState extends State<ComponentOption> {
+  ComponentOptionState();
+
+  bool isHover = false;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {},
+    return InkWell(
+      onTap: () => widget.callback(widget.index),
+      onHover: (v) => setState(() {
+        isHover = v;
+      }),
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -33,16 +47,16 @@ class ComponentOption extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              input.title,
+              widget.input.title,
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
+                color: widget.isSelected ? Colors.white : Colors.black,
                 fontSize: 16,
               ),
             ),
             Text(
-              "+" + input.score.toString(),
+              "+" + widget.input.score.toString(),
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
+                color: widget.isSelected ? Colors.white : Colors.black,
                 fontSize: 16,
               ),
             ),
@@ -50,16 +64,24 @@ class ComponentOption extends StatelessWidget {
         ),
         height: 40,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue[400] : Colors.black.withOpacity(0.1),
+          color: widget.isSelected
+              ? Colors.blue[400]
+              : isHover
+                  ? Colors.black.withOpacity(0.15)
+                  : Colors.black.withOpacity(0.1),
           borderRadius: BorderRadius.only(
-            topLeft:
-                isTop ? const Radius.circular(5) : const Radius.circular(0),
-            topRight:
-                isTop ? const Radius.circular(5) : const Radius.circular(0),
-            bottomLeft:
-                isBottom ? const Radius.circular(5) : const Radius.circular(0),
-            bottomRight:
-                isBottom ? const Radius.circular(5) : const Radius.circular(0),
+            topLeft: widget.index == 0
+                ? const Radius.circular(5)
+                : const Radius.circular(0),
+            topRight: widget.index == 0
+                ? const Radius.circular(5)
+                : const Radius.circular(0),
+            bottomLeft: widget.isLast
+                ? const Radius.circular(5)
+                : const Radius.circular(0),
+            bottomRight: widget.isLast
+                ? const Radius.circular(5)
+                : const Radius.circular(0),
           ),
           border: Border.all(
             color: Colors.black,

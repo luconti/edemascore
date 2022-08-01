@@ -31,8 +31,9 @@ class ComponentOptionsState extends State<ComponentOptions> {
           ComponentOption(
             input: widget.options[i],
             isSelected: i == selectedOption,
-            isTop: i == 0,
-            isBottom: i == widget.options.length - 1,
+            callback: selectOption,
+            index: i,
+            isLast: i == widget.options.length - 1,
           )
       ],
     );
