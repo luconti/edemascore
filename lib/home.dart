@@ -25,22 +25,37 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
                     Input(
+                      title: "Effacement",
+                      description:
+                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.blue,
                     ),
                     Divider(),
                     Input(
+                      title: "Effacement",
+                      description:
+                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                     Divider(),
                     Input(
+                      title: "Effacement",
+                      description:
+                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                     Divider(),
                     Input(
+                      title: "Effacement",
+                      description:
+                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                     Divider(),
                     Input(
+                      title: "Effacement",
+                      description:
+                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                   ],

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
-  const Input({Key? key, required this.color}) : super(key: key);
+  const Input({
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.color,
+  }) : super(key: key);
 
+  final String title;
+  final String description;
   final Color color;
 
   @override
@@ -24,7 +31,7 @@ class Input extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Effacement",
+                      title,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -32,7 +39,7 @@ class Input extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "descriptiondescriptiondescriptiondescriptiondescriptiondescription",
+                      description,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
