@@ -1,4 +1,5 @@
 import 'package:edema_calc/widgets/component_option.dart';
+import 'package:edema_calc/widgets/components.dart';
 import 'package:flutter/material.dart';
 import 'widgets/component.dart';
 
@@ -22,30 +23,7 @@ class _HomePageState extends State<HomePage> {
               Flexible(flex: 1, child: Container()),
               Flexible(
                 flex: calculateFlex(constraints),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Component(
-                      title: "Effacement",
-                      description:
-                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      options: [
-                        ComponentOptionInput(title: "Yes", score: 0),
-                        ComponentOptionInput(title: "No", score: 1),
-                      ],
-                    ),
-                    const Divider(),
-                    Component(
-                      title: "Effacement",
-                      description:
-                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      options: [
-                        ComponentOptionInput(title: "Yes", score: 0),
-                        ComponentOptionInput(title: "No", score: 1),
-                      ],
-                    ),
-                  ],
-                ),
+                child: const Components(),
               ),
               Flexible(flex: 1, child: Container()),
             ],
