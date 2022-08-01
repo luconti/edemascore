@@ -40,54 +40,52 @@ class ComponentState extends State<Component> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-        return Row(
-          children: [
-            Flexible(
-              child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.input.title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black.withOpacity(0.6),
-                      ),
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Flexible(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.input.title,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black.withOpacity(0.6),
                     ),
-                    Text(
-                      widget.input.description,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black.withOpacity(0.5),
-                      ),
+                  ),
+                  Text(
+                    widget.input.description,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black.withOpacity(0.5),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            Flexible(
-              child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                child: ComponentOptions(
-                  options: widget.input.options,
-                  selectedOption: selectedOption,
-                  selectOption: selectOption,
-                ),
+          ),
+          Flexible(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+              child: ComponentOptions(
+                options: widget.input.options,
+                selectedOption: selectedOption,
+                selectOption: selectOption,
               ),
             ),
-          ],
-        );
-      }),
-    );
+          ),
+        ],
+      );
+    });
   }
 }

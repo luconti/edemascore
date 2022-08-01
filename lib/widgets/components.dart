@@ -7,17 +7,19 @@ List<ComponentInput> components = [
     title: "Effacement",
     description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
     options: [
-      ComponentOptionInput(title: "Yes", score: 0),
-      ComponentOptionInput(title: "No", score: 1),
-      ComponentOptionInput(title: "Maybe", score: 2),
+      ComponentOptionInput(title: "No", score: 0),
+      ComponentOptionInput(title: "Yes", score: 3),
     ],
   ),
   ComponentInput(
-    title: "Gender",
+    title: "Midline Shift",
     description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
     options: [
-      ComponentOptionInput(title: "Male", score: 0),
-      ComponentOptionInput(title: "Famale", score: 1),
+      ComponentOptionInput(title: "0", score: 0),
+      ComponentOptionInput(title: "0-3mm", score: 1),
+      ComponentOptionInput(title: "3-6mm", score: 2),
+      ComponentOptionInput(title: "6-9mm", score: 4),
+      ComponentOptionInput(title: ">9mm", score: 7),
     ],
   )
 ];
