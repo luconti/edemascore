@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'input.dart';
+import 'widgets/input.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);

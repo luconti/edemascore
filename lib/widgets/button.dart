@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+class ButtonInput {
+  final String title;
+  final String value;
+
+  ButtonInput({
+    required this.title,
+    required this.value,
+  });
+}
+
 class Button extends StatelessWidget {
   const Button({Key? key}) : super(key: key);
 
