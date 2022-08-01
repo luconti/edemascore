@@ -24,7 +24,8 @@ List<ComponentInput> components = [
   ),
   ComponentInput(
     title: "Glucose",
-    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    description:
+        "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm yorm epsum yorm epsum yorm epsum yorm",
     options: [
       ComponentOptionInput(title: "<150", score: 0),
       ComponentOptionInput(title: ">=150", score: 2),
@@ -59,8 +60,23 @@ class ComponentsState extends State<Components> {
   // initally, the first option of each component is the selected one
   List<int> scores = components.map((c) => c.options[0].score).toList();
 
+  int totalScore = 0;
+
+  @override
+  void initState() {
+    for (int s in scores) {
+      totalScore += s;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // recompute total score whenever state is reset
+    for (int s in scores) {
+      totalScore += s;
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -76,7 +92,29 @@ class ComponentsState extends State<Components> {
               const Divider(),
             ],
           ),
-        Text(scores.toString()),
+        // TODO: extract into a different component
+        Column(
+          children: [
+            RichText(
+              text: TextSpan(
+                  text: totalScore.toString(),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.black,
+                  ),
+                  children: const <TextSpan>[
+                    TextSpan(
+                      text: " points",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    )
+                  ]),
+            ),
+            const Text("Lorem epsum"),
+          ],
+        )
       ],
     );
   }
