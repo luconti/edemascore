@@ -1,3 +1,4 @@
+import 'package:edema_calc/widgets/component_option.dart';
 import 'package:flutter/material.dart';
 import 'widgets/component.dart';
 
@@ -23,40 +24,25 @@ class _HomePageState extends State<HomePage> {
                 flex: calculateFlex(constraints),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      color: Colors.blue,
+                      options: [
+                        ComponentOptionInput(title: "Yes", score: 0),
+                        ComponentOptionInput(title: "No", score: 1),
+                      ],
                     ),
-                    Divider(),
+                    const Divider(),
                     Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      color: Colors.green,
-                    ),
-                    Divider(),
-                    Component(
-                      title: "Effacement",
-                      description:
-                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      color: Colors.green,
-                    ),
-                    Divider(),
-                    Component(
-                      title: "Effacement",
-                      description:
-                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      color: Colors.green,
-                    ),
-                    Divider(),
-                    Component(
-                      title: "Effacement",
-                      description:
-                          "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
-                      color: Colors.green,
+                      options: [
+                        ComponentOptionInput(title: "Yes", score: 0),
+                        ComponentOptionInput(title: "No", score: 1),
+                      ],
                     ),
                   ],
                 ),

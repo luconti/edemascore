@@ -7,25 +7,23 @@ class Component extends StatelessWidget {
     Key? key,
     required this.title,
     required this.description,
-    required this.color,
+    required this.options,
   }) : super(key: key);
 
   final String title;
   final String description;
-  final Color color;
+  final List<ComponentOptionInput> options;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      color: color,
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         return Row(
           children: [
             Flexible(
               child: Container(
-                color: Colors.yellow,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -54,14 +52,9 @@ class Component extends StatelessWidget {
             ),
             Flexible(
               child: Container(
-                color: Colors.yellow[50],
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: ComponentOptions(
-                  options: [
-                    ComponentOptionInput(title: "Effacement", score: 0)
-                  ],
-                ),
+                child: ComponentOptions(options: options),
               ),
             ),
           ],
