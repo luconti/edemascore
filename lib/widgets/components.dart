@@ -21,7 +21,31 @@ List<ComponentInput> components = [
       ComponentOptionInput(title: "6-9mm", score: 4),
       ComponentOptionInput(title: ">9mm", score: 7),
     ],
-  )
+  ),
+  ComponentInput(
+    title: "Glucose",
+    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    options: [
+      ComponentOptionInput(title: "<150", score: 0),
+      ComponentOptionInput(title: ">=150", score: 2),
+    ],
+  ),
+  ComponentInput(
+    title: "Previous Stroke",
+    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    options: [
+      ComponentOptionInput(title: "Yes", score: 0),
+      ComponentOptionInput(title: "No", score: 1),
+    ],
+  ),
+  ComponentInput(
+    title: "Intervention (tPA or thrombectomy",
+    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    options: [
+      ComponentOptionInput(title: "Yes", score: 0),
+      ComponentOptionInput(title: "No", score: 1),
+    ],
+  ),
 ];
 
 class Components extends StatefulWidget {
