@@ -27,6 +27,27 @@ class ComponentOption extends StatelessWidget {
     return GestureDetector(
       onTap: () => {},
       child: Container(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              input.title,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              "+" + input.score.toString(),
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
         height: 40,
         decoration: BoxDecoration(
           color: isSelected ? Colors.blue[400] : Colors.black.withOpacity(0.1),
