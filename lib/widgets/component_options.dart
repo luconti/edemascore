@@ -1,25 +1,17 @@
 import 'package:edema_calc/widgets/component_option.dart';
 import 'package:flutter/material.dart';
 
-class ComponentOptions extends StatefulWidget {
-  const ComponentOptions({Key? key, required this.options}) : super(key: key);
+class ComponentOptions extends StatelessWidget {
+  const ComponentOptions({
+    Key? key,
+    required this.options,
+    required this.selectedOption,
+    required this.selectOption,
+  }) : super(key: key);
 
   final List<ComponentOptionInput> options;
-
-  @override
-  State<ComponentOptions> createState() => ComponentOptionsState();
-}
-
-class ComponentOptionsState extends State<ComponentOptions> {
-  ComponentOptionsState();
-
-  int selectedOption = 0;
-
-  void selectOption(int i) {
-    setState(() {
-      selectedOption = i;
-    });
-  }
+  final void Function(int index) selectOption;
+  final int selectedOption;
 
   @override
   Widget build(context) {
@@ -27,13 +19,13 @@ class ComponentOptionsState extends State<ComponentOptions> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        for (int i = 0; i < widget.options.length; i++)
+        for (int i = 0; i < options.length; i++)
           ComponentOption(
-            input: widget.options[i],
+            input: options[i],
             isSelected: i == selectedOption,
             callback: selectOption,
             index: i,
-            isLast: i == widget.options.length - 1,
+            isLast: i == options.length - 1,
           )
       ],
     );

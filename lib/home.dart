@@ -1,7 +1,5 @@
-import 'package:edema_calc/widgets/component_option.dart';
 import 'package:edema_calc/widgets/components.dart';
 import 'package:flutter/material.dart';
-import 'widgets/component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);

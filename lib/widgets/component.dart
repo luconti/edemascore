@@ -2,21 +2,45 @@ import 'package:edema_calc/widgets/component_option.dart';
 import 'package:edema_calc/widgets/component_options.dart';
 import 'package:flutter/material.dart';
 
-class Component extends StatelessWidget {
-  const Component({
-    Key? key,
-    required this.title,
-    required this.description,
-    required this.options,
-  }) : super(key: key);
-
+class ComponentInput {
   final String title;
   final String description;
   final List<ComponentOptionInput> options;
 
+  ComponentInput({
+    required this.title,
+    required this.description,
+    required this.options,
+  });
+}
+
+class Component extends StatefulWidget {
+  const Component({
+    Key? key,
+    required this.input,
+    required this.onSelectOption,
+  }) : super(key: key);
+
+  final ComponentInput input;
+  final void Function(int index) onSelectOption;
+
+  @override
+  State<StatefulWidget> createState() => ComponentState();
+}
+
+class ComponentState extends State<Component> {
+  int selectedOption = 0;
+
+  void selectOption(int i) {
+    setState(() {
+      selectedOption = i;
+    });
+    widget.onSelectOption(i);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
@@ -31,7 +55,7 @@ class Component extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      widget.input.title,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -39,7 +63,7 @@ class Component extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      description,
+                      widget.input.description,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -54,7 +78,11 @@ class Component extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: ComponentOptions(options: options),
+                child: ComponentOptions(
+                  options: widget.input.options,
+                  selectedOption: selectedOption,
+                  selectOption: selectOption,
+                ),
               ),
             ),
           ],
