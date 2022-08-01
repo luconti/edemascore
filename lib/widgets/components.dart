@@ -10,8 +10,8 @@ class ButtonInput {
   });
 }
 
-class Button extends StatelessWidget {
-  const Button({Key? key}) : super(key: key);
+class Components extends StatelessWidget {
+  const Components({Key? key}) : super(key: key);
 
   @override
   Widget build(context) {

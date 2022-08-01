@@ -1,4 +1,4 @@
-import 'package:edema_calc/widgets/button.dart';
+import 'package:edema_calc/widgets/components.dart';
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
@@ -56,7 +56,7 @@ class Input extends StatelessWidget {
                 color: Colors.yellow[50],
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: const Button(),
+                child: const Components(),
               ),
             ),
           ],
