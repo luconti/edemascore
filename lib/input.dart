@@ -1,3 +1,4 @@
+import 'package:edema_calc/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
@@ -55,40 +56,7 @@ class Input extends StatelessWidget {
                 color: Colors.yellow[50],
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () => {},
-                      child: Container(
-                        height: 40,
-                        decoration: const BoxDecoration(
-                          color: Colors.black,
-                          // TODO: only add radius to top and bottom buttons
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(5),
-                            topRight: Radius.circular(5),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => {},
-                      child: Container(
-                        height: 40,
-                        decoration: const BoxDecoration(
-                          color: Colors.black,
-                          // TODO: only add radius to top and bottom buttons
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(5),
-                            bottomRight: Radius.circular(5),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                child: const Button(),
               ),
             ),
           ],
