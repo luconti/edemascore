@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/input.dart';
+import 'widgets/component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -24,35 +24,35 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
-                    Input(
+                    Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.blue,
                     ),
                     Divider(),
-                    Input(
+                    Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                     Divider(),
-                    Input(
+                    Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                     Divider(),
-                    Input(
+                    Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
                       color: Colors.green,
                     ),
                     Divider(),
-                    Input(
+                    Component(
                       title: "Effacement",
                       description:
                           "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
