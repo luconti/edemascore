@@ -30,6 +30,7 @@ class Components extends StatefulWidget {
 }
 
 class ComponentsState extends State<Components> {
+  // initally, the first option of each component is the selected one
   List<int> scores = components.map((c) => c.options[0].score).toList();
 
   @override
@@ -42,11 +43,14 @@ class ComponentsState extends State<Components> {
             children: [
               Component(
                 input: components[i],
-                onSelectOption: (i) => {},
+                onSelectOption: (selectedOption) => setState(() {
+                  scores[i] = components[i].options[selectedOption].score;
+                }),
               ),
               const Divider(),
             ],
           ),
+        Text(scores.toString()),
       ],
     );
   }
