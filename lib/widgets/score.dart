@@ -19,6 +19,7 @@ class ComponentScore extends StatelessWidget {
                 : Colors.red,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichText(
             text: TextSpan(
