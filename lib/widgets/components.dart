@@ -73,6 +73,7 @@ class ComponentsState extends State<Components> {
   @override
   Widget build(BuildContext context) {
     // recompute total score whenever state is reset
+    totalScore = 0;
     for (int s in scores) {
       totalScore += s;
     }
