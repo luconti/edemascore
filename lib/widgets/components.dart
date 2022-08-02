@@ -1,5 +1,6 @@
 import 'package:edema_calc/widgets/component.dart';
 import 'package:edema_calc/widgets/component_option.dart';
+import 'package:edema_calc/widgets/score.dart';
 import 'package:flutter/material.dart';
 
 List<ComponentInput> components = [
@@ -93,29 +94,7 @@ class ComponentsState extends State<Components> {
               const Divider(),
             ],
           ),
-        // TODO: extract into a different component
-        Column(
-          children: [
-            RichText(
-              text: TextSpan(
-                  text: totalScore.toString(),
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.black,
-                  ),
-                  children: const <TextSpan>[
-                    TextSpan(
-                      text: " points",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    )
-                  ]),
-            ),
-            const Text("Lorem epsum"),
-          ],
-        )
+        Score(totalScore: totalScore),
       ],
     );
   }
