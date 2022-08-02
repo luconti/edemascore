@@ -1,5 +1,5 @@
-import 'package:edema_calc/widgets/component_option.dart';
-import 'package:edema_calc/widgets/component_options.dart';
+import 'package:edema_calc/widgets/option.dart';
+import 'package:edema_calc/widgets/options.dart';
 import 'package:flutter/material.dart';
 
 class ComponentInput {

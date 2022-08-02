@@ -1,6 +1,7 @@
 import 'package:edema_calc/widgets/component.dart';
-import 'package:edema_calc/widgets/component_option.dart';
-import 'package:edema_calc/widgets/component_score.dart';
+import 'package:edema_calc/widgets/option.dart';
+import 'package:edema_calc/widgets/score.dart';
+import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
 List<ComponentInput> components = [
@@ -84,16 +85,7 @@ class ComponentsState extends State<Components> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        ComponentTitle(title: widget.title),
         for (int i = 0; i < components.length; ++i)
           Column(
             children: [
