@@ -21,7 +21,10 @@ class _HomePageState extends State<HomePage> {
               Flexible(flex: 1, child: Container()),
               Flexible(
                 flex: calculateFlex(constraints),
-                child: const Components(),
+                child: Container(
+                  child: const Components(title: "EDEMA Calculator"),
+                  padding: const EdgeInsets.only(top: 20, bottom: 50),
+                ),
               ),
               Flexible(flex: 1, child: Container()),
             ],
