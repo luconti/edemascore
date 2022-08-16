@@ -35,6 +35,7 @@ class ComponentsState extends State<Components> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const Divider(),
         for (int i = 0; i < components.length; ++i)
           Column(
             children: [

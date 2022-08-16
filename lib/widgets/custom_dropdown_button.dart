@@ -30,12 +30,27 @@ class CustomDropdownButton extends StatelessWidget {
           isLast: isLast,
           verticallyStacked: false,
         ),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            color: isSelected ? Colors.white : Colors.black,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                color: isSelected ? Colors.white : Colors.black,
+              ),
+            ),
+            isSelected
+                ? const Icon(
+                    Icons.keyboard_arrow_up_rounded,
+                    color: Colors.white,
+                  )
+                : const Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: Colors.black,
+                  )
+          ],
         ),
       ),
     );
