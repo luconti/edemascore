@@ -1,7 +1,6 @@
 import 'package:edema_calc/widgets/component.dart';
 import 'package:edema_calc/widgets/option.dart';
 import 'package:edema_calc/widgets/score.dart';
-import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
 List<ComponentInput> components = [
@@ -54,9 +53,7 @@ List<ComponentInput> components = [
 ];
 
 class Components extends StatefulWidget {
-  const Components({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const Components({Key? key}) : super(key: key);
 
   @override
   State<Components> createState() => ComponentsState();
@@ -87,7 +84,6 @@ class ComponentsState extends State<Components> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ComponentTitle(title: widget.title),
         for (int i = 0; i < components.length; ++i)
           Column(
             children: [

@@ -1,4 +1,5 @@
 import 'package:edema_calc/widgets/components.dart';
+import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,9 +22,17 @@ class _HomePageState extends State<HomePage> {
               Flexible(flex: 3, child: Container()),
               Flexible(
                 flex: calculateFlex(constraints),
-                child: Container(
-                  child: const Components(title: "EDEMA Calculator"),
-                  padding: const EdgeInsets.only(top: 20, bottom: 50),
+                child: Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 20, bottom: 20),
+                      child: PageTitle("EDEMA Calculator"),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(top: 20, bottom: 50),
+                      child: const Components(),
+                    ),
+                  ],
                 ),
               ),
               Flexible(flex: 3, child: Container()),

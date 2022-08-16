@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ComponentTitle extends StatelessWidget {
-  const ComponentTitle({Key? key, required this.title}) : super(key: key);
+class PageTitle extends StatelessWidget {
+  const PageTitle(this.title, {Key? key}) : super(key: key);
 
   final String title;
 
