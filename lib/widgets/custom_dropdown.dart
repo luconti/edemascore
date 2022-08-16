@@ -57,7 +57,7 @@ class _CustomDropdwonState extends State<CustomDropdown> {
         selectedIndex != null
             ? Row(
                 children: [
-                  Flexible(
+                  Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       margin: const EdgeInsets.only(top: 10),
