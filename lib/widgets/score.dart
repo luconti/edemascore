@@ -1,3 +1,4 @@
+import 'package:edema_calc/consts/score.dart';
 import 'package:flutter/material.dart';
 
 class ComponentScore extends StatelessWidget {
@@ -7,6 +8,8 @@ class ComponentScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String description = scoreMap[totalScore]?.getString() ?? "";
+
     return Container(
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.all(10),
@@ -29,24 +32,35 @@ class ComponentScore extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                   color: Colors.white,
                 ),
-                children: const <TextSpan>[
-                  TextSpan(
+                children: <TextSpan>[
+                  const TextSpan(
                     text: " points",
                     style: TextStyle(
                       fontSize: 18,
                     ),
-                  )
+                  ),
+                  TextSpan(
+                    text: totalScore <= 1
+                        ? " (low score)"
+                        : totalScore <= 4
+                            ? " (medium score)"
+                            : " (high score)",
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ]),
           ),
-          Text(
-            totalScore <= 1
-                ? "Low Score"
-                : totalScore <= 4
-                    ? "Medium Score"
-                    : "High Score",
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              description,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

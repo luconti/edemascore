@@ -14,6 +14,18 @@ class ScoreDescription {
     required this.sens,
     required this.spec,
   });
+
+  String getString() {
+    return "Given the EDEMA score above, the patient has a risk of Potentially Lethal Malignant Edema with a probability of " +
+        prob.toString() +
+        "% (positive predictive value of " +
+        ppv.toString() +
+        ", sensitivity of " +
+        sens.toString() +
+        ", and specificity of " +
+        spec.toString() +
+        ")";
+  }
 }
 
 Map<int, ScoreDescription> scoreMap = {
