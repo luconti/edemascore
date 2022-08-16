@@ -44,11 +44,12 @@ class _CustomDropdwonState extends State<CustomDropdown> {
         Row(
           children: [
             for (int i = 0; i < dropdownInputs.length; i++)
-              Flexible(
-                flex: 1,
+              Expanded(
                 child: CustomDropdownButton(
+                  title: dropdownInputs[i].buttonTitle,
                   isFirst: i == 0,
                   isLast: i == dropdownInputs.length - 1,
+                  isSelected: selectedIndex == i,
                   callback: () {
                     setState(() {
                       if (selectedIndex == i) {
@@ -62,7 +63,6 @@ class _CustomDropdwonState extends State<CustomDropdown> {
               )
           ],
         ),
-        // TODO: extract this into another component
         // TODO: animate
         // TODO: edit padding
         selectedIndex != null
