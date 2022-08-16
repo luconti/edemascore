@@ -1,4 +1,5 @@
 import 'package:edema_calc/widgets/components.dart';
+import 'package:edema_calc/widgets/customDropdown.dart';
 import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
@@ -23,11 +24,14 @@ class _HomePageState extends State<HomePage> {
               Flexible(
                 flex: calculateFlex(constraints),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(top: 20, bottom: 20),
                       child: PageTitle("EDEMA Calculator"),
                     ),
+                    // TODO: add Dropdowns here
+                    CustomDropdown(),
                     Container(
                       padding: const EdgeInsets.only(top: 20, bottom: 50),
                       child: const Components(),

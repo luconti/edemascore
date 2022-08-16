@@ -1,3 +1,4 @@
+import 'package:edema_calc/consts/buttons.dart';
 import 'package:flutter/material.dart';
 
 class ComponentOptionInput {
@@ -62,31 +63,12 @@ class ComponentOptionState extends State<ComponentOption> {
             ),
           ],
         ),
-        height: 40,
-        decoration: BoxDecoration(
-          color: widget.isSelected
-              ? Colors.blue[400]
-              : isHover
-                  ? Colors.black.withOpacity(0.15)
-                  : Colors.black.withOpacity(0.1),
-          borderRadius: BorderRadius.only(
-            topLeft: widget.index == 0
-                ? const Radius.circular(5)
-                : const Radius.circular(0),
-            topRight: widget.index == 0
-                ? const Radius.circular(5)
-                : const Radius.circular(0),
-            bottomLeft: widget.isLast
-                ? const Radius.circular(5)
-                : const Radius.circular(0),
-            bottomRight: widget.isLast
-                ? const Radius.circular(5)
-                : const Radius.circular(0),
-          ),
-          border: Border.all(
-            color: Colors.black,
-            width: 0.1,
-          ),
+        height: buttonHeight,
+        decoration: getButtonDecoration(
+          isSelected: widget.isSelected,
+          isHover: isHover,
+          isFirst: widget.index == 0,
+          isLast: widget.isLast,
         ),
       ),
     );
