@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 List<ComponentInput> components = [
   ComponentInput(
-    title: "Effacement",
+    title: "Basilar Cistern Effacement",
     description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
     options: [
       ComponentOptionInput(title: "No", score: 0),
@@ -18,10 +18,10 @@ List<ComponentInput> components = [
     description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
     options: [
       ComponentOptionInput(title: "0", score: 0),
-      ComponentOptionInput(title: "0-3mm", score: 1),
-      ComponentOptionInput(title: "3-6mm", score: 2),
-      ComponentOptionInput(title: "6-9mm", score: 4),
-      ComponentOptionInput(title: ">9mm", score: 7),
+      ComponentOptionInput(title: ">0 and ≤3 mm", score: 1),
+      ComponentOptionInput(title: ">3 and ≤6 mm", score: 2),
+      ComponentOptionInput(title: ">6 and ≤9 mm", score: 4),
+      ComponentOptionInput(title: ">9 mm", score: 7),
     ],
   ),
   ComponentInput(
@@ -42,7 +42,7 @@ List<ComponentInput> components = [
     ],
   ),
   ComponentInput(
-    title: "Intervention (tPA or thrombectomy",
+    title: "Intervention (tPA or thrombectomy)",
     description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
     options: [
       ComponentOptionInput(title: "Yes", score: 0),
