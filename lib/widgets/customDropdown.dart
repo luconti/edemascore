@@ -6,53 +6,74 @@ class CustomDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        // make this a dropdown button
-        Flexible(
-          flex: 1,
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              height: buttonHeight,
-              decoration: getButtonDecoration(
-                isSelected: false,
-                isFirst: true,
-                isLast: false,
-                verticallyStacked: false,
+        Row(
+          children: [
+            Flexible(
+              flex: 1,
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: buttonHeight,
+                  decoration: getButtonDecoration(
+                    isSelected: false,
+                    isFirst: true,
+                    isLast: false,
+                    verticallyStacked: false,
+                  ),
+                ),
               ),
             ),
-          ),
+            Flexible(
+              flex: 1,
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: buttonHeight,
+                  decoration: getButtonDecoration(
+                    isSelected: false,
+                    isFirst: false,
+                    isLast: false,
+                    verticallyStacked: false,
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: buttonHeight,
+                  decoration: getButtonDecoration(
+                    isSelected: false,
+                    isFirst: false,
+                    isLast: true,
+                    verticallyStacked: false,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        Flexible(
-          flex: 1,
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              height: buttonHeight,
-              decoration: getButtonDecoration(
-                isSelected: false,
-                isFirst: false,
-                isLast: false,
-                verticallyStacked: false,
+        // TODO: extract this into another component
+        Row(
+          children: [
+            Flexible(
+              child: AnimatedContainer(
+                // TODO: edit padding
+                duration: const Duration(milliseconds: 500),
+                padding: const EdgeInsets.all(50),
+                margin: const EdgeInsets.only(top: 10),
+                child: const Text(
+                    "Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world "),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.15),
+                ),
               ),
             ),
-          ),
-        ),
-        Flexible(
-          flex: 1,
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              height: buttonHeight,
-              decoration: getButtonDecoration(
-                isSelected: false,
-                isFirst: false,
-                isLast: true,
-                verticallyStacked: false,
-              ),
-            ),
-          ),
+          ],
         ),
       ],
     );
