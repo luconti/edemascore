@@ -48,7 +48,10 @@ class ComponentsState extends State<Components> {
               const Divider(),
             ],
           ),
-        ComponentScore(totalScore: totalScore),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: ComponentScore(totalScore: totalScore),
+        ),
       ],
     );
   }

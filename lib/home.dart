@@ -20,9 +20,12 @@ class _HomePageState extends State<HomePage> {
         return SingleChildScrollView(
           child: Row(
             children: [
-              Flexible(flex: 3, child: Container()),
               Flexible(
-                flex: calculateFlex(constraints),
+                flex: calculateLateralFlex(constraints),
+                child: Container(),
+              ),
+              Flexible(
+                flex: calculateCenterFlex(constraints),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -30,7 +33,10 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.only(top: 20, bottom: 20),
                       child: PageTitle("EDEMA Calculator"),
                     ),
-                    const CustomDropdown(),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: CustomDropdown(),
+                    ),
                     Container(
                       padding: const EdgeInsets.only(top: 20, bottom: 50),
                       child: const Components(),
@@ -38,7 +44,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Flexible(flex: 3, child: Container()),
+              Flexible(
+                flex: calculateLateralFlex(constraints),
+                child: Container(),
+              ),
             ],
           ),
         );
@@ -47,12 +56,22 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-int calculateFlex(BoxConstraints constraints) {
+int calculateCenterFlex(BoxConstraints constraints) {
   return constraints.maxWidth < 400
       ? 16
-      : constraints.maxWidth < 700
+      : constraints.maxWidth < 750
           ? 12
           : constraints.maxWidth < 1000
               ? 6
               : 4;
+}
+
+int calculateLateralFlex(BoxConstraints constraints) {
+  return constraints.maxWidth < 400
+      ? 0
+      : constraints.maxWidth < 700
+          ? 1
+          : constraints.maxWidth < 1100
+              ? 2
+              : 3;
 }
