@@ -1,6 +1,6 @@
 import 'package:edema_calc/widgets/component.dart';
 import 'package:edema_calc/widgets/option.dart';
-import 'package:edema_calc/widgets/score.dart';
+import 'package:edema_calc/widgets/component_score.dart';
 import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
