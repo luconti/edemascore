@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 List<ComponentInput> components = [
   ComponentInput(
     title: "Basilar Cistern Effacement",
-    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    description:
+        "Was there basilar cistern effacement within 24hrs of last seen well on CT?",
     options: [
       ComponentOptionInput(title: "No", score: 0),
       ComponentOptionInput(title: "Yes", score: 3),
@@ -15,7 +16,8 @@ List<ComponentInput> components = [
   ),
   ComponentInput(
     title: "Midline Shift",
-    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    description:
+        "How many millimeters of midline shift were there within 24hrs of last seen well on CT?",
     options: [
       ComponentOptionInput(title: "0", score: 0),
       ComponentOptionInput(title: ">0 and ≤3 mm", score: 1),
@@ -26,8 +28,7 @@ List<ComponentInput> components = [
   ),
   ComponentInput(
     title: "Glucose",
-    description:
-        "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm yorm epsum yorm epsum yorm epsum yorm",
+    description: "What was the patient’s admission glucose (first glucose)?",
     options: [
       ComponentOptionInput(title: "<150", score: 0),
       ComponentOptionInput(title: ">=150", score: 2),
@@ -35,7 +36,7 @@ List<ComponentInput> components = [
   ),
   ComponentInput(
     title: "Previous Stroke",
-    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    description: "Did the patient have a previous stroke?",
     options: [
       ComponentOptionInput(title: "Yes", score: 0),
       ComponentOptionInput(title: "No", score: 1),
@@ -43,7 +44,8 @@ List<ComponentInput> components = [
   ),
   ComponentInput(
     title: "Intervention (tPA or thrombectomy)",
-    description: "Lorem epsum yorm epsum yorm epsum yorm epsum yorm epsum yorm",
+    description:
+        "Did the patient undergo initial intervention with either tissue plasminogen activator (tPA) or mechanical thrombectomy?",
     options: [
       ComponentOptionInput(title: "Yes", score: 0),
       ComponentOptionInput(title: "No", score: 1),
