@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         return SingleChildScrollView(
           child: Row(
             children: [
-              Flexible(flex: 1, child: Container()),
+              Flexible(flex: 3, child: Container()),
               Flexible(
                 flex: calculateFlex(constraints),
                 child: Container(
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(top: 20, bottom: 50),
                 ),
               ),
-              Flexible(flex: 1, child: Container()),
+              Flexible(flex: 3, child: Container()),
             ],
           ),
         );
@@ -37,10 +37,10 @@ class _HomePageState extends State<HomePage> {
 
 int calculateFlex(BoxConstraints constraints) {
   return constraints.maxWidth < 400
-      ? 14
-      : constraints.maxWidth < 600
-          ? 10
+      ? 16
+      : constraints.maxWidth < 700
+          ? 12
           : constraints.maxWidth < 1000
               ? 6
-              : 2;
+              : 4;
 }
