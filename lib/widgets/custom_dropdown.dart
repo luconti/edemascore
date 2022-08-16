@@ -44,7 +44,11 @@ class _CustomDropdwonState extends State<CustomDropdown> {
                   isLast: i == dropdownInputs.length - 1,
                   callback: () {
                     setState(() {
-                      selectedIndex = i;
+                      if (selectedIndex == i) {
+                        selectedIndex = null;
+                      } else {
+                        selectedIndex = i;
+                      }
                     });
                   },
                 ),
