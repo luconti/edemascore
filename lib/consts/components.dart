@@ -28,7 +28,7 @@ List<ComponentInput> components = [
     description: "What was the patient’s admission glucose (first glucose)?",
     options: [
       ComponentOptionInput(title: "<150", score: 0),
-      ComponentOptionInput(title: ">=150", score: 2),
+      ComponentOptionInput(title: "≥150", score: 2),
     ],
   ),
   ComponentInput(
