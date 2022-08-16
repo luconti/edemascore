@@ -66,7 +66,6 @@ class ComponentOptionState extends State<ComponentOption> {
         height: buttonHeight,
         decoration: getButtonDecoration(
           isSelected: widget.isSelected,
-          isHover: isHover,
           isFirst: widget.index == 0,
           isLast: widget.isLast,
         ),

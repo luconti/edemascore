@@ -2,6 +2,8 @@ import 'package:edema_calc/consts/buttons.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropdown extends StatelessWidget {
+  const CustomDropdown({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,7 +17,6 @@ class CustomDropdown extends StatelessWidget {
               height: buttonHeight,
               decoration: getButtonDecoration(
                 isSelected: false,
-                isHover: false,
                 isFirst: true,
                 isLast: false,
                 verticallyStacked: false,
@@ -28,8 +29,13 @@ class CustomDropdown extends StatelessWidget {
           child: InkWell(
             onTap: () {},
             child: Container(
-              height: 10,
-              color: Colors.yellow,
+              height: buttonHeight,
+              decoration: getButtonDecoration(
+                isSelected: false,
+                isFirst: false,
+                isLast: false,
+                verticallyStacked: false,
+              ),
             ),
           ),
         ),
@@ -38,8 +44,13 @@ class CustomDropdown extends StatelessWidget {
           child: InkWell(
             onTap: () {},
             child: Container(
-              height: 10,
-              color: Colors.green,
+              height: buttonHeight,
+              decoration: getButtonDecoration(
+                isSelected: false,
+                isFirst: false,
+                isLast: true,
+                verticallyStacked: false,
+              ),
             ),
           ),
         ),
