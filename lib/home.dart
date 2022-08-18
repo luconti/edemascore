@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.selectedOptions}) : super(key: key);
 
   static String routeName = "/";
-  final PreselectedOptions selectedOptions;
+  final SelectedOptions selectedOptions;
 
   @override
   State<HomePage> createState() => _HomePageState();

@@ -51,7 +51,7 @@ class App extends StatelessWidget {
 
           return MaterialPageRoute(builder: (context) {
             return HomePage(
-              selectedOptions: PreselectedOptions(
+              selectedOptions: SelectedOptions(
                 effacement: effacementOption,
                 midlineShift: midlineShiftOption,
                 glucose: glucoseOption,

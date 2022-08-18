@@ -9,7 +9,7 @@ class Components extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final PreselectedOptions selectedOptions;
+  final SelectedOptions selectedOptions;
 
   @override
   State<Components> createState() => ComponentsState();
