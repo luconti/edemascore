@@ -12,7 +12,8 @@ class Components extends StatefulWidget {
 
 class ComponentsState extends State<Components> {
   // initally, the first option of each component is the selected one
-  List<int> scores = components.map((c) => c.options[0].score).toList();
+  List<int> scores =
+      ComponentInput.values.map((c) => c.options[0].score).toList();
 
   int totalScore = 0;
 
@@ -36,13 +37,14 @@ class ComponentsState extends State<Components> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Divider(),
-        for (int i = 0; i < components.length; ++i)
+        for (int i = 0; i < ComponentInput.values.length; ++i)
           Column(
             children: [
               Component(
-                input: components[i],
+                input: ComponentInput.values[i],
                 onSelectOption: (selectedOption) => setState(() {
-                  scores[i] = components[i].options[selectedOption].score;
+                  scores[i] =
+                      ComponentInput.values[i].options[selectedOption].score;
                 }),
               ),
               const Divider(),

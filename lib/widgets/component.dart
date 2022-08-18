@@ -1,18 +1,7 @@
+import 'package:edema_calc/consts/components.dart';
 import 'package:edema_calc/widgets/option.dart';
 import 'package:edema_calc/widgets/options.dart';
 import 'package:flutter/material.dart';
-
-class ComponentInput {
-  final String title;
-  final String description;
-  final List<ComponentOptionInput> options;
-
-  ComponentInput({
-    required this.title,
-    required this.description,
-    required this.options,
-  });
-}
 
 class Component extends StatefulWidget {
   const Component({

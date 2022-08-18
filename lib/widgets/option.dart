@@ -1,12 +1,6 @@
 import 'package:edema_calc/consts/buttons.dart';
+import 'package:edema_calc/consts/components.dart';
 import 'package:flutter/material.dart';
-
-class ComponentOptionInput {
-  final String title;
-  final int score;
-
-  ComponentOptionInput({required this.title, required this.score});
-}
 
 class ComponentOption extends StatefulWidget {
   const ComponentOption({

@@ -11,7 +11,26 @@ class App extends StatelessWidget {
         fontFamily: 'OpenSans',
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(title: 'EDEMA score home page'),
+      onGenerateRoute: (settings) {
+        // get route name
+        final uri = Uri.parse(settings.name ?? "/");
+        final routeName = uri.path;
+
+        if (routeName == HomePage.routeName) {
+          // extract arguments;
+          final name = uri.queryParameters['name'];
+
+          final effacement = uri.queryParameters['effacement'] ?? "No";
+          final midlineShift = uri.queryParameters['midline-shift'];
+          final glucose = uri.queryParameters['glucose'];
+          final previousStroke = uri.queryParameters['previous-stroke'];
+          final intervention = uri.queryParameters['intervention'];
+
+          return MaterialPageRoute(builder: (context) {
+            return const HomePage(title: "Edema Score Home Page");
+          });
+        }
+      },
     );
   }
 }
