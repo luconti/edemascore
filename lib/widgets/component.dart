@@ -1,5 +1,4 @@
 import 'package:edema_calc/consts/components.dart';
-import 'package:edema_calc/widgets/option.dart';
 import 'package:edema_calc/widgets/options.dart';
 import 'package:flutter/material.dart';
 
@@ -8,17 +7,26 @@ class Component extends StatefulWidget {
     Key? key,
     required this.input,
     required this.onSelectOption,
+    this.selectedOption = 0,
   }) : super(key: key);
 
   final ComponentInput input;
   final void Function(int index) onSelectOption;
+  final int selectedOption;
 
   @override
   State<StatefulWidget> createState() => ComponentState();
 }
 
 class ComponentState extends State<Component> {
-  int selectedOption = 0;
+  late int selectedOption;
+
+  @override
+  void initState() {
+    // the selected option starts as the one passed as argument from the parent
+    selectedOption = widget.selectedOption;
+    super.initState();
+  }
 
   void selectOption(int i) {
     setState(() {

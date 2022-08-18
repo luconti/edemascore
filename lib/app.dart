@@ -17,9 +17,8 @@ class App extends StatelessWidget {
         final routeName = uri.path;
 
         if (routeName == HomePage.routeName) {
-          // extract arguments;
+          // extract which options to choose for each component
           final name = uri.queryParameters['name'];
-
           final effacement = uri.queryParameters['effacement'] ?? "No";
           final midlineShift = uri.queryParameters['midline-shift'];
           final glucose = uri.queryParameters['glucose'];
