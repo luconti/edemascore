@@ -22,6 +22,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text(
+          "EDEMA Score",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: LayoutBuilder(builder: (context, constraints) {
         return SingleChildScrollView(
           child: Row(
