@@ -41,10 +41,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const CustomDropdown(),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 50),
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
                         child: Components(widget.selectedOptions),
                       ),
-                      ShareButton()
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: ShareButton(),
+                      )
                     ],
                   ),
                 ),
