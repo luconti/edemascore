@@ -54,8 +54,10 @@ class _HomePageState extends State<HomePage> {
                           child: Consumer<SelectedOptions>(
                             builder: (context, selectedOptions, _) {
                               return Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  ShareButton(selectedOptions),
                                   ShareButton(selectedOptions),
                                 ],
                               );
