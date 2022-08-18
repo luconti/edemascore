@@ -37,8 +37,6 @@ class AppState extends State<App> {
               final route = Uri.parse(settings.name ?? "/");
               final routeName = route.path;
 
-              // final newURI = Uri.base.replace(path: "a different path");
-
               if (routeName == HomePage.routeName) {
                 return MaterialPageRoute(builder: (context) {
                   return const HomePage();

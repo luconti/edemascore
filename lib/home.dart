@@ -50,9 +50,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
-                        child: ShareButton(),
-                      )
+                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          child: Consumer<SelectedOptions>(
+                            builder: (context, selectedOptions, _) {
+                              return ShareButton(selectedOptions);
+                            },
+                          ))
                     ],
                   ),
                 ),

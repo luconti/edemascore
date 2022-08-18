@@ -68,15 +68,20 @@ class SelectedOptions extends ChangeNotifier {
     final route = Uri.parse(settings.name ?? "/");
 
     // extract from the URL the preselected option of each component
-    int effacementOption = toInt[route.queryParameters['effacement']] ?? 0;
-    int glucoseOption = toInt[route.queryParameters['glucose']] ?? 0;
+    int effacementOption =
+        toInt[route.queryParameters[ComponentInput.effacement.param]] ?? 0;
+    int glucoseOption =
+        toInt[route.queryParameters[ComponentInput.glucose.param]] ?? 0;
     int previousStrokeOption =
-        toInt[route.queryParameters['previous-stroke']] ?? 0;
-    int interventionOption = toInt[route.queryParameters['intervention']] ?? 0;
+        toInt[route.queryParameters[ComponentInput.previousStroke.param]] ?? 0;
+    int interventionOption =
+        toInt[route.queryParameters[ComponentInput.intervention.param]] ?? 0;
+    int midlineShift =
+        toInt[route.queryParameters[ComponentInput.midlineShift.param]] ?? 0;
 
     return SelectedOptions(
       effacement: effacementOption > 2 ? 2 : effacementOption,
-      midlineShift: toInt[route.queryParameters['midline-shift']] ?? 0,
+      midlineShift: midlineShift,
       glucose: glucoseOption > 2 ? 2 : glucoseOption,
       previousStroke: previousStrokeOption > 2 ? 2 : previousStrokeOption,
       intervention: interventionOption > 2 ? 2 : interventionOption,

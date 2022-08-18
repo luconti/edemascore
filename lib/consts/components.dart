@@ -17,6 +17,7 @@ enum ComponentInput {
 }
 
 extension ComponentInputExtension on ComponentInput {
+  // the title that gets displayed in the UI
   String get title {
     switch (this) {
       case ComponentInput.effacement:
@@ -32,6 +33,7 @@ extension ComponentInputExtension on ComponentInput {
     }
   }
 
+  // the description that gets displayed in the UI
   String get description {
     switch (this) {
       case ComponentInput.effacement:
@@ -77,6 +79,22 @@ extension ComponentInputExtension on ComponentInput {
           ComponentOptionInput(title: "Yes", score: 0),
           ComponentOptionInput(title: "No", score: 1),
         ];
+    }
+  }
+
+  // the parameter name in the URL
+  String get param {
+    switch (this) {
+      case ComponentInput.effacement:
+        return "effacement";
+      case ComponentInput.midlineShift:
+        return "midline-shift";
+      case ComponentInput.glucose:
+        return "glucose";
+      case ComponentInput.previousStroke:
+        return "previous-stroke";
+      case ComponentInput.intervention:
+        return "intervention";
     }
   }
 }
