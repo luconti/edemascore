@@ -1,6 +1,8 @@
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:edema_calc/widgets/custom_dropdown.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 List<DropDownInput> dropdownInputs = [
   DropDownInput(
@@ -33,9 +35,56 @@ List<DropDownInput> dropdownInputs = [
               size: 16,
               color: Colors.green.shade900.withOpacity(0.6),
             ),
-            listItems: const [
-              "To our knowledge, the EDEMA score was developed from the largest single cohort of patients with malignant edema in the literature at the time.",
-              "The EDEMA score has been externally validated in a cohort of 478 patients in Cheng et al, 2020.",
+            listItems: [
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    height: 1.1,
+                  ),
+                  children: [
+                    const TextSpan(
+                      text:
+                          "To our knowledge, the EDEMA score was developed from the largest single cohort of patients with malignant edema in the literature at the time ",
+                    ),
+                    const TextSpan(text: " ("),
+                    TextSpan(
+                      text: "Ong et at., 2017",
+                      style: const TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => html.window.open(
+                            "https://pubmed.ncbi.nlm.nih.gov/28487333/",
+                            "new tab"),
+                    ),
+                    TextSpan(text: ")."),
+                  ],
+                ),
+              ),
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    height: 1.1,
+                  ),
+                  children: [
+                    const TextSpan(
+                      text:
+                          "The EDEMA score has been externally validated in a cohort of 478 patients in ",
+                    ),
+                    TextSpan(
+                      text: "Cheng et al, 2020",
+                      style: const TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => html.window.open(
+                            "https://pubmed.ncbi.nlm.nih.gov/31549349/",
+                            "new tab"),
+                    ),
+                    TextSpan(text: "."),
+                  ],
+                ),
+              ),
               "Better identification of patients with moderate to severe risk of developing LTME can inform clinical management such as planning decompressive hemicraniectomies, transfer to tertiary care centers, and improved family discussions.",
               "Increasing EDEMA scores (0-14) indicate a higher probability of LTME.",
               "In patients who received an EDEMA score of ≥ 7, the positive predictive value of LTME was 93%.",
