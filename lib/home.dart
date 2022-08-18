@@ -3,6 +3,7 @@ import 'package:edema_calc/consts/components.dart';
 import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/widgets/components.dart';
 import 'package:edema_calc/widgets/custom_dropdown.dart';
+import 'package:edema_calc/widgets/feedbackButton.dart';
 import 'package:edema_calc/widgets/shareButton.dart';
 import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ShareButton(selectedOptions),
-                                  ShareButton(selectedOptions),
+                                  FeedbackButton(),
                                 ],
                               );
                             },

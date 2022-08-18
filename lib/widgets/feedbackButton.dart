@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:html' as html;
 
-class FeedbackButtonState extends StatelessWidget {
-  const FeedbackButtonState({Key? key}) : super(key: key);
+class FeedbackButton extends StatelessWidget {
+  const FeedbackButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
