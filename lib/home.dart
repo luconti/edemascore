@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       const Padding(
                         padding: EdgeInsets.only(top: 20, bottom: 20),
-                        child: PageTitle("EDEMA Calculator"),
+                        child: PageTitle("EDEMA Score Calculator"),
                       ),
                       const CustomDropdown(),
                       Padding(
