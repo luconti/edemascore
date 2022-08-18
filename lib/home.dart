@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 int calculateCenterFlex(BoxConstraints constraints) {
-  return constraints.maxWidth < 400
+  return constraints.maxWidth < 550
       ? 16
       : constraints.maxWidth < 750
           ? 12
@@ -67,7 +67,7 @@ int calculateCenterFlex(BoxConstraints constraints) {
 }
 
 int calculateLateralFlex(BoxConstraints constraints) {
-  return constraints.maxWidth < 400
+  return constraints.maxWidth < 550
       ? 0
       : constraints.maxWidth < 700
           ? 1
