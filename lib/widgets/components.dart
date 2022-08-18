@@ -4,7 +4,12 @@ import 'package:edema_calc/widgets/score.dart';
 import 'package:flutter/material.dart';
 
 class Components extends StatefulWidget {
-  const Components({Key? key}) : super(key: key);
+  const Components(
+    this.selectedOptions, {
+    Key? key,
+  }) : super(key: key);
+
+  final PreselectedOptions selectedOptions;
 
   @override
   State<Components> createState() => ComponentsState();
@@ -12,13 +17,15 @@ class Components extends StatefulWidget {
 
 class ComponentsState extends State<Components> {
   // initally, the first option of each component is the selected one
-  List<int> scores =
-      ComponentInput.values.map((c) => c.options[0].score).toList();
+  List<int> scores = [];
 
   int totalScore = 0;
 
   @override
   void initState() {
+    scores = ComponentInput.values
+        .map((c) => c.options[widget.selectedOptions.from(c)].score)
+        .toList();
     for (int s in scores) {
       totalScore += s;
     }
@@ -42,6 +49,8 @@ class ComponentsState extends State<Components> {
             children: [
               Component(
                 input: ComponentInput.values[i],
+                selectedOption:
+                    widget.selectedOptions.from(ComponentInput.values[i]),
                 onSelectOption: (selectedOption) => setState(() {
                   scores[i] =
                       ComponentInput.values[i].options[selectedOption].score;

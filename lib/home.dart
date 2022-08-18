@@ -1,13 +1,14 @@
+import 'package:edema_calc/consts/components.dart';
 import 'package:edema_calc/widgets/components.dart';
 import 'package:edema_calc/widgets/custom_dropdown.dart';
 import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
+  const HomePage({Key? key, required this.selectedOptions}) : super(key: key);
 
   static String routeName = "/";
-  final String title;
+  final PreselectedOptions selectedOptions;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -39,9 +40,8 @@ class _HomePageState extends State<HomePage> {
                       child: CustomDropdown(),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(top: 20, bottom: 50),
-                      child: const Components(),
-                    ),
+                        padding: const EdgeInsets.only(top: 20, bottom: 50),
+                        child: Components(widget.selectedOptions)),
                   ],
                 ),
               ),
