@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class DropDownInput {
   final String buttonTitle;
-  final String content;
+  final Widget content;
 
   DropDownInput({required this.buttonTitle, required this.content});
 }
@@ -56,7 +56,7 @@ class _CustomDropdwonState extends State<CustomDropdown> {
                 children: [
                   Expanded(
                     child: CustomDropdownContent(
-                      content: dropdownInputs[selectedIndex ?? 0].content,
+                      dropdownInputs[selectedIndex ?? 0].content,
                     ),
                   ),
                 ],
