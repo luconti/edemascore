@@ -53,7 +53,12 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(top: 20, bottom: 20),
                           child: Consumer<SelectedOptions>(
                             builder: (context, selectedOptions, _) {
-                              return ShareButton(selectedOptions);
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ShareButton(selectedOptions),
+                                ],
+                              );
                             },
                           ))
                     ],
