@@ -1,39 +1,17 @@
 import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/widgets/options.dart';
 import 'package:flutter/material.dart';
 
-class Component extends StatefulWidget {
+class Component extends StatelessWidget {
   const Component({
     Key? key,
     required this.input,
-    required this.onSelectOption,
-    this.selectedOption = 0,
+    required this.selectedOptions,
   }) : super(key: key);
 
   final ComponentInput input;
-  final void Function(int index) onSelectOption;
-  final int selectedOption;
-
-  @override
-  State<StatefulWidget> createState() => ComponentState();
-}
-
-class ComponentState extends State<Component> {
-  late int selectedOption;
-
-  @override
-  void initState() {
-    // the selected option starts as the one passed as argument from the parent
-    selectedOption = widget.selectedOption;
-    super.initState();
-  }
-
-  void selectOption(int i) {
-    setState(() {
-      selectedOption = i;
-    });
-    widget.onSelectOption(i);
-  }
+  final SelectedOptions selectedOptions;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +29,7 @@ class ComponentState extends State<Component> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    widget.input.title,
+                    input.title,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -59,7 +37,7 @@ class ComponentState extends State<Component> {
                     ),
                   ),
                   Text(
-                    widget.input.description,
+                    input.description,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -75,9 +53,9 @@ class ComponentState extends State<Component> {
               alignment: Alignment.center,
               padding: const EdgeInsets.only(top: 10, bottom: 10),
               child: ComponentOptions(
-                options: widget.input.options,
-                selectedOption: selectedOption,
-                selectOption: selectOption,
+                options: input.options,
+                selectedOption: selectedOptions.from(input),
+                selectOption: (int i) => selectedOptions.set(input, i),
               ),
             ),
           ),

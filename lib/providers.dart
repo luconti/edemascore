@@ -2,11 +2,11 @@ import 'package:edema_calc/consts/components.dart';
 import 'package:flutter/material.dart';
 
 class SelectedOptions extends ChangeNotifier {
-  final int effacement;
-  final int midlineShift;
-  final int glucose;
-  final int previousStroke;
-  final int intervention;
+  int effacement;
+  int midlineShift;
+  int glucose;
+  int previousStroke;
+  int intervention;
 
   SelectedOptions({
     this.effacement = 0,
@@ -29,5 +29,57 @@ class SelectedOptions extends ChangeNotifier {
       case ComponentInput.intervention:
         return intervention;
     }
+  }
+
+  // set the selected option of a component input
+  void set(ComponentInput c, int newOption) {
+    switch (c) {
+      case ComponentInput.effacement:
+        effacement = newOption;
+        break;
+      case ComponentInput.midlineShift:
+        midlineShift = newOption;
+        break;
+      case ComponentInput.glucose:
+        glucose = newOption;
+        break;
+      case ComponentInput.previousStroke:
+        previousStroke = newOption;
+        break;
+      case ComponentInput.intervention:
+        intervention = newOption;
+        break;
+    }
+
+    notifyListeners();
+  }
+
+  factory SelectedOptions.fromURI(RouteSettings settings) {
+    // map from the URL parameter possible values
+    const Map<String, int> toInt = {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5
+    };
+
+    final route = Uri.parse(settings.name ?? "/");
+
+    // extract from the URL the preselected option of each component
+    int effacementOption = toInt[route.queryParameters['effacement']] ?? 0;
+    int glucoseOption = toInt[route.queryParameters['glucose']] ?? 0;
+    int previousStrokeOption =
+        toInt[route.queryParameters['previous-stroke']] ?? 0;
+    int interventionOption = toInt[route.queryParameters['intervention']] ?? 0;
+
+    return SelectedOptions(
+      effacement: effacementOption > 2 ? 2 : effacementOption,
+      midlineShift: toInt[route.queryParameters['midline-shift']] ?? 0,
+      glucose: glucoseOption > 2 ? 2 : glucoseOption,
+      previousStroke: previousStrokeOption > 2 ? 2 : previousStrokeOption,
+      intervention: interventionOption > 2 ? 2 : interventionOption,
+    );
   }
 }

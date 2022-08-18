@@ -1,9 +1,10 @@
 import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/widgets/component.dart';
 import 'package:edema_calc/widgets/score.dart';
 import 'package:flutter/material.dart';
 
-class Components extends StatefulWidget {
+class Components extends StatelessWidget {
   const Components(
     this.selectedOptions, {
     Key? key,
@@ -12,33 +13,12 @@ class Components extends StatefulWidget {
   final SelectedOptions selectedOptions;
 
   @override
-  State<Components> createState() => ComponentsState();
-}
-
-class ComponentsState extends State<Components> {
-  // initally, the first option of each component is the selected one
-  List<int> scores = [];
-
-  int totalScore = 0;
-
-  @override
-  void initState() {
-    scores = ComponentInput.values
-        .map((c) => c.options[widget.selectedOptions.from(c)].score)
-        .toList();
-    for (int s in scores) {
-      totalScore += s;
-    }
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // recompute total score whenever state is reset
-    totalScore = 0;
-    for (int s in scores) {
-      totalScore += s;
-    }
+    // calculate total score from selected options
+    int totalScore = ComponentInput.values
+        .map((c) => c.options[selectedOptions.from(c)].score)
+        .toList()
+        .reduce((sum, score) => sum + score);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,12 +29,7 @@ class ComponentsState extends State<Components> {
             children: [
               Component(
                 input: ComponentInput.values[i],
-                selectedOption:
-                    widget.selectedOptions.from(ComponentInput.values[i]),
-                onSelectOption: (selectedOption) => setState(() {
-                  scores[i] =
-                      ComponentInput.values[i].options[selectedOption].score;
-                }),
+                selectedOptions: selectedOptions,
               ),
               const Divider(),
             ],
