@@ -14,8 +14,13 @@ class App extends StatelessWidget {
       ),
       onGenerateRoute: (settings) {
         // get route name
-        final uri = Uri.parse(settings.name ?? "/");
-        final routeName = uri.path;
+        final route = Uri.parse(settings.name ?? "/");
+        final routeName = route.path;
+
+        final newURI = Uri.base.replace(path: "a different path");
+
+        // debugPrint(Uri.base.authority);
+        // // debugPrint(settings.name);
 
         if (routeName == HomePage.routeName) {
           // map from the URL parameter possible values
@@ -29,18 +34,19 @@ class App extends StatelessWidget {
           };
 
           // extract from the URL the preselected option of each component
-          int effacementOption = toInt[uri.queryParameters['effacement']] ?? 0;
+          int effacementOption =
+              toInt[route.queryParameters['effacement']] ?? 0;
           effacementOption = effacementOption > 2 ? 2 : effacementOption;
           int midlineShiftOption =
-              toInt[uri.queryParameters['midline-shift']] ?? 0;
-          int glucoseOption = toInt[uri.queryParameters['glucose']] ?? 0;
+              toInt[route.queryParameters['midline-shift']] ?? 0;
+          int glucoseOption = toInt[route.queryParameters['glucose']] ?? 0;
           glucoseOption = glucoseOption > 2 ? 2 : glucoseOption;
           int previousStrokeOption =
-              toInt[uri.queryParameters['previous-stroke']] ?? 0;
+              toInt[route.queryParameters['previous-stroke']] ?? 0;
           previousStrokeOption =
               previousStrokeOption > 2 ? 2 : previousStrokeOption;
           int interventionOption =
-              toInt[uri.queryParameters['intervention']] ?? 0;
+              toInt[route.queryParameters['intervention']] ?? 0;
           interventionOption = interventionOption > 2 ? 2 : interventionOption;
 
           return MaterialPageRoute(builder: (context) {
