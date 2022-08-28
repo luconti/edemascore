@@ -21,75 +21,37 @@ class HomePage extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return PageTemplate(
-      page: Row(
+      page: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
-            flex: calculateLateralFlex(screenWidth),
-            child: Container(),
+          const Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 20),
+            child: PageTitle("EDEMA Score Calculator"),
           ),
-          Flexible(
-            flex: calculateCenterFlex(screenWidth),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20, bottom: 20),
-                    child: PageTitle("EDEMA Score Calculator"),
-                  ),
-                  const CustomDropdown(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 20),
-                    child: Consumer<SelectedOptions>(
-                      builder: (context, selectedOptions, _) {
-                        return Components(selectedOptions);
-                      },
-                    ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 20),
-                      child: Consumer<SelectedOptions>(
-                        builder: (context, selectedOptions, _) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              ShareButton(selectedOptions),
-                              FeedbackButton(),
-                            ],
-                          );
-                        },
-                      ))
-                ],
-              ),
+          const CustomDropdown(),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
+            child: Consumer<SelectedOptions>(
+              builder: (context, selectedOptions, _) {
+                return Components(selectedOptions);
+              },
             ),
           ),
-          Flexible(
-            flex: calculateLateralFlex(screenWidth),
-            child: Container(),
-          ),
+          Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              child: Consumer<SelectedOptions>(
+                builder: (context, selectedOptions, _) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ShareButton(selectedOptions),
+                      FeedbackButton(),
+                    ],
+                  );
+                },
+              ))
         ],
       ),
     );
-  }
-
-  int calculateCenterFlex(double screenWidth) {
-    return screenWidth < 550
-        ? 16
-        : screenWidth < 750
-            ? 12
-            : screenWidth < 1000
-                ? 6
-                : 4;
-  }
-
-  int calculateLateralFlex(double screenWidth) {
-    return screenWidth < 550
-        ? 0
-        : screenWidth < 700
-            ? 1
-            : screenWidth < 1100
-                ? 2
-                : 3;
   }
 }

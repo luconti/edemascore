@@ -27,7 +27,24 @@ class _PageTemplateState extends State<PageTemplate> {
             Padding(
               // shift body down by height of navigation bar
               padding: EdgeInsets.only(top: navigationBarHeight),
-              child: SingleChildScrollView(child: widget.page),
+              child: SingleChildScrollView(
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: calculateLateralFlex(constraints.maxWidth),
+                      child: Container(),
+                    ),
+                    Flexible(
+                      flex: calculateCenterFlex(constraints.maxWidth),
+                      child: widget.page,
+                    ),
+                    Flexible(
+                      flex: calculateLateralFlex(constraints.maxWidth),
+                      child: Container(),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Positioned(
               top: 0,
@@ -53,5 +70,25 @@ class _PageTemplateState extends State<PageTemplate> {
         );
       }),
     );
+  }
+
+  int calculateCenterFlex(double screenWidth) {
+    return screenWidth < 550
+        ? 16
+        : screenWidth < 750
+            ? 12
+            : screenWidth < 1000
+                ? 6
+                : 4;
+  }
+
+  int calculateLateralFlex(double screenWidth) {
+    return screenWidth < 550
+        ? 0
+        : screenWidth < 700
+            ? 1
+            : screenWidth < 1100
+                ? 2
+                : 3;
   }
 }
