@@ -53,7 +53,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               (action) => Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: InkWell(
-                  onTap: () => Navigator.pushNamed(context, action.routeName),
+                  onTap: () => onTapAction(context, action.routeName),
                   child: Text(
                     action.title,
                     style: getActionStyle(),

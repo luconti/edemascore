@@ -38,11 +38,15 @@ class AppState extends State<App> {
               final routeName = route.path;
 
               if (routeName == HomePage.routeName) {
-                return MaterialPageRoute(builder: (context) {
-                  return const HomePage();
-                });
+                return MaterialPageRoute(
+                  settings: settings,
+                  builder: (context) {
+                    return const HomePage();
+                  },
+                );
               }
             },
+            // home: const HomePage(),
           );
         });
   }
