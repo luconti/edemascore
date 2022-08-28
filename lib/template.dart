@@ -1,3 +1,4 @@
+import 'package:edema_calc/authors.dart';
 import 'package:edema_calc/home.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +33,18 @@ class _PageTemplateState extends State<PageTemplate> {
               top: 0,
               child: CustomNavigationBar(
                 actions: [
-                  CustomAction(title: "Home", routeName: HomePage.routeName),
-                  CustomAction(title: "About the authors", routeName: "/"),
-                  CustomAction(title: "Management", routeName: "/"),
+                  CustomAction(
+                    title: "Home",
+                    routeName: HomePage.routeName,
+                  ),
+                  CustomAction(
+                    title: "About the authors",
+                    routeName: AuthorsPage.routeName,
+                  ),
+                  CustomAction(
+                    title: "Management",
+                    routeName: "/",
+                  ),
                 ],
                 height: navigationBarHeight,
               ),

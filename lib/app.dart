@@ -1,3 +1,4 @@
+import 'package:edema_calc/authors.dart';
 import 'package:edema_calc/consts/components.dart';
 import 'package:edema_calc/providers.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,15 @@ class AppState extends State<App> {
                   settings: settings,
                   builder: (context) {
                     return const HomePage();
+                  },
+                );
+              }
+
+              if (routeName == AuthorsPage.routeName) {
+                return MaterialPageRoute(
+                  settings: settings,
+                  builder: (context) {
+                    return const AuthorsPage();
                   },
                 );
               }
