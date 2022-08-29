@@ -1,5 +1,5 @@
 import 'package:edema_calc/authors.dart';
-import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/interventions.dart';
 import 'package:edema_calc/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,8 +55,16 @@ class AppState extends State<App> {
                   },
                 );
               }
+
+              if (routeName == InterventionsPage.routeName) {
+                return MaterialPageRoute(
+                  settings: settings,
+                  builder: (context) {
+                    return const InterventionsPage();
+                  },
+                );
+              }
             },
-            // home: const HomePage(),
           );
         });
   }

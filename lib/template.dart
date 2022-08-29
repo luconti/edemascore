@@ -1,5 +1,6 @@
 import 'package:edema_calc/authors.dart';
 import 'package:edema_calc/home.dart';
+import 'package:edema_calc/interventions.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -58,12 +59,12 @@ class _PageTemplateState extends State<PageTemplate> {
                     routeName: HomePage.routeName,
                   ),
                   CustomAction(
-                    title: "About the authors",
+                    title: "About the author",
                     routeName: AuthorsPage.routeName,
                   ),
                   CustomAction(
-                    title: "Management",
-                    routeName: "/",
+                    title: "Interventions",
+                    routeName: InterventionsPage.routeName,
                   ),
                 ],
                 height: navigationBarHeight,
@@ -86,12 +87,10 @@ class _PageTemplateState extends State<PageTemplate> {
   }
 
   int calculateLateralFlex(double screenWidth) {
-    return screenWidth < 550
-        ? 0
-        : screenWidth < 700
-            ? 1
-            : screenWidth < 1100
-                ? 2
-                : 3;
+    return screenWidth < 700
+        ? 1
+        : screenWidth < 1100
+            ? 2
+            : 3;
   }
 }

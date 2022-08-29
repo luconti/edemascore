@@ -9,10 +9,6 @@ class AuthorsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
-    // TODO: consider moving even the lateral flexes to TemplatePage
-
     return PageTemplate(
       page: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,6 +122,7 @@ class AuthorsPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
           ),
+          const SizedBox(height: 40),
         ],
       ),
     );
