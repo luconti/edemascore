@@ -2,6 +2,7 @@ import 'package:edema_calc/consts/actions.dart';
 import 'package:edema_calc/home.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
 import 'package:edema_calc/widgets/drawer.dart';
+import 'package:edema_calc/widgets/mobile_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class PageTemplate extends StatefulWidget {
@@ -58,39 +59,9 @@ class _PageTemplateState extends State<PageTemplate> {
                       actions: actions,
                       height: navigationBarHeight,
                     )
-                  : Container(
-                      width: constraints.maxWidth,
+                  : MobileNavigationBar(
+                      scaffoldKey: scaffoldKey,
                       height: navigationBarHeight,
-                      color: Colors.blue,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 40, right: 40),
-                        child: Row(
-                          children: [
-                            InkWell(
-                              onTap: () =>
-                                  onTapAction(context, HomePage.routeName),
-                              child: const Text(
-                                "EDEMA Score",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                            Flexible(
-                              child: Container(),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.menu_rounded),
-                              iconSize: constraints.maxWidth < 400 ? 25 : 30,
-                              onPressed: () =>
-                                  scaffoldKey.currentState?.openEndDrawer(),
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ),
                     ),
             )
           ],

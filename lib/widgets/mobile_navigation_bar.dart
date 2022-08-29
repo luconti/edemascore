@@ -6,11 +6,11 @@ class MobileNavigationBar extends StatefulWidget {
   const MobileNavigationBar({
     Key? key,
     required this.scaffoldKey,
-    this.navigationBarHeight,
+    this.height,
   }) : super(key: key);
 
   final GlobalKey<ScaffoldState> scaffoldKey;
-  final double? navigationBarHeight;
+  final double? height;
 
   @override
   _MobileNavigationBarState createState() => _MobileNavigationBarState();
@@ -22,7 +22,7 @@ class _MobileNavigationBarState extends State<MobileNavigationBar> {
     final double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: screenWidth,
-      height: widget.navigationBarHeight ?? 50,
+      height: widget.height ?? 50,
       color: Colors.blue,
       child: Padding(
         padding: const EdgeInsets.only(left: 40, right: 40),
