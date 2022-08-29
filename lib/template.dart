@@ -1,7 +1,9 @@
 import 'package:edema_calc/authors.dart';
+import 'package:edema_calc/consts/actions.dart';
 import 'package:edema_calc/home.dart';
 import 'package:edema_calc/interventions.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
+import 'package:edema_calc/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class PageTemplate extends StatefulWidget {
@@ -16,12 +18,13 @@ class PageTemplate extends StatefulWidget {
 
 class _PageTemplateState extends State<PageTemplate> {
   final double navigationBarHeight = 50;
-
-  // TODO: 700 pixels is when we switch to mobile view
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: const CustomDrawer(),
+      key: scaffoldKey,
       body: LayoutBuilder(builder: (context, constraints) {
         return Stack(
           children: [
@@ -52,23 +55,45 @@ class _PageTemplateState extends State<PageTemplate> {
             ),
             Positioned(
               top: 0,
-              child: CustomNavigationBar(
-                actions: [
-                  CustomAction(
-                    title: "Home",
-                    routeName: HomePage.routeName,
-                  ),
-                  CustomAction(
-                    title: "About the author",
-                    routeName: AuthorsPage.routeName,
-                  ),
-                  CustomAction(
-                    title: "Interventions",
-                    routeName: InterventionsPage.routeName,
-                  ),
-                ],
-                height: navigationBarHeight,
-              ),
+              child: constraints.maxWidth > 700
+                  ? CustomNavigationBar(
+                      actions: actions,
+                      height: navigationBarHeight,
+                    )
+                  : Container(
+                      width: constraints.maxWidth,
+                      height: navigationBarHeight,
+                      color: Colors.blue,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 40, right: 40),
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () =>
+                                  onTapAction(context, HomePage.routeName),
+                              child: const Text(
+                                "EDEMA Score",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              child: Container(),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.menu_rounded),
+                              iconSize: constraints.maxWidth < 400 ? 25 : 30,
+                              onPressed: () =>
+                                  scaffoldKey.currentState?.openEndDrawer(),
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
             )
           ],
         );
@@ -92,5 +117,11 @@ class _PageTemplateState extends State<PageTemplate> {
         : screenWidth < 1100
             ? 2
             : 3;
+  }
+}
+
+void onTapAction(BuildContext context, String routeName) {
+  if (ModalRoute.of(context)?.settings.name != routeName) {
+    Navigator.pushNamed(context, routeName);
   }
 }

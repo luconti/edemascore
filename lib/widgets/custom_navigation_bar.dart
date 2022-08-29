@@ -1,12 +1,7 @@
+import 'package:edema_calc/consts/actions.dart';
 import 'package:edema_calc/home.dart';
+import 'package:edema_calc/template.dart';
 import 'package:flutter/material.dart';
-
-class CustomAction {
-  final String title;
-  final String routeName;
-
-  CustomAction({required this.title, required this.routeName});
-}
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({
@@ -65,12 +60,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         ),
       ),
     );
-  }
-
-  void onTapAction(BuildContext context, String routeName) {
-    if (ModalRoute.of(context)?.settings.name != routeName) {
-      Navigator.pushNamed(context, routeName);
-    }
   }
 
   TextStyle getActionStyle() {
