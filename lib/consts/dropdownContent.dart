@@ -31,7 +31,7 @@ List<DropDownInput> dropdownInputs = [
             height: 1.1,
           ),
           bullet: Icon(
-            Icons.thumb_up_alt_rounded,
+            Icons.add_circle_outline,
             size: 16,
             color: Colors.green.shade900.withOpacity(0.6),
           ),
@@ -105,9 +105,9 @@ List<DropDownInput> dropdownInputs = [
             height: 1.1,
           ),
           bullet: Icon(
-            Icons.thumb_down_alt_rounded,
+            Icons.remove_circle_outline,
             size: 16,
-            color: Colors.red.shade900.withOpacity(0.6),
+            color: Colors.yellow.shade900.withOpacity(0.6),
           ),
           listItems: const [
             "This tool is meant to help clinicians stratify a patient’s risk of LTME but does not reflect all or other factors that may influence clinical decision making.",
