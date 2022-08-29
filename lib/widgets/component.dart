@@ -48,6 +48,7 @@ class Component extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(width: 5),
           Flexible(
             child: Container(
               alignment: Alignment.center,
