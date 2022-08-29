@@ -17,7 +17,7 @@ class ComponentScore extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         color: totalScore <= 1
             ? Colors.green
-            : totalScore <= 4
+            : totalScore <= 6
                 ? Colors.orange
                 : Colors.red,
       ),
@@ -42,7 +42,7 @@ class ComponentScore extends StatelessWidget {
                   TextSpan(
                     text: totalScore <= 1
                         ? " (low score)"
-                        : totalScore <= 4
+                        : totalScore <= 6
                             ? " (medium score)"
                             : " (high score)",
                     style: const TextStyle(

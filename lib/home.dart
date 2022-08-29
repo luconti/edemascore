@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ShareButton(selectedOptions),
-                      FeedbackButton(),
+                      const FeedbackButton(),
                     ],
                   );
                 },
