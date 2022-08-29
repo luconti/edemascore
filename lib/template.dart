@@ -36,7 +36,10 @@ class _PageTemplateState extends State<PageTemplate> {
                     ),
                     Flexible(
                       flex: calculateCenterFlex(constraints.maxWidth),
-                      child: widget.page,
+                      child: SizedBox(
+                        width: constraints.maxWidth,
+                        child: widget.page,
+                      ),
                     ),
                     Flexible(
                       flex: calculateLateralFlex(constraints.maxWidth),
