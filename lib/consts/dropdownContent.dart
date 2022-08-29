@@ -8,7 +8,7 @@ List<DropDownInput> dropdownInputs = [
   DropDownInput(
     buttonTitle: "When to Use",
     content: const Text(
-      "    Use the EDEMA score to help quantify the probability of life-threatening mass effect (LTME) in patients presenting with large hemispheric infarctions (LHI) caused by an ischemic stroke involving more than 1⁄2 of the middle cerebral artery (MCA) territory within 24 hours of last known normal (LKN) with a high positive predictive value.",
+      "Use the EDEMA score to help quantify the probability of life-threatening mass effect (LTME) in patients presenting with large hemispheric infarctions (LHI) caused by an ischemic stroke involving more than 1⁄2 of the middle cerebral artery (MCA) territory within 24 hours of last known normal (LKN) with a high positive predictive value.",
       style: TextStyle(fontSize: 16),
     ),
   ),
@@ -122,8 +122,8 @@ List<DropDownInput> dropdownInputs = [
   DropDownInput(
     buttonTitle: "Why Use",
     content: const Text(
-      "    Each year, approximately 10% of the ~800,000 Americans hospitalized for ischemic stroke develop clinically significant brain swelling and mass effect within the first week. The risk can be 30-40% in patients with middle cerebral artery (MCA) occlusion.\n\n"
-      "    Rapid recognition of patients who will develop LTME after large hemispheric infarction is essential for appropriate triage to tertiary care centers and possible decompressive hemicraniectomy (DHC).",
+      "Each year, approximately 10% of the ~800,000 Americans hospitalized for ischemic stroke develop clinically significant brain swelling and mass effect within the first week. The risk can be 30-40% in patients with middle cerebral artery (MCA) occlusion.\n\n"
+      "Rapid recognition of patients who will develop LTME after large hemispheric infarction is essential for appropriate triage to tertiary care centers and possible decompressive hemicraniectomy (DHC).",
       style: TextStyle(fontSize: 16),
     ),
   ),
