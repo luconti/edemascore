@@ -20,10 +20,21 @@ class _CustomDrawerState extends State<CustomDrawer> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: index == 0 ? 20 : 10),
               InkWell(
-                child: Text(action.title),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Text(
+                    action.title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
                 onTap: () => _onTapAction(index, action),
               ),
+              const SizedBox(height: 10),
             ],
           );
         },

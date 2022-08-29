@@ -1,7 +1,5 @@
-import 'package:edema_calc/authors.dart';
 import 'package:edema_calc/consts/actions.dart';
 import 'package:edema_calc/home.dart';
-import 'package:edema_calc/interventions.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
 import 'package:edema_calc/widgets/drawer.dart';
 import 'package:flutter/material.dart';
