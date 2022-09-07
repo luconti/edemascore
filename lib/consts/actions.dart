@@ -15,11 +15,11 @@ List<CustomAction> actions = [
     routeName: HomePage.routeName,
   ),
   CustomAction(
-    title: "About the author",
-    routeName: AuthorsPage.routeName,
-  ),
-  CustomAction(
     title: "Interventions",
     routeName: InterventionsPage.routeName,
+  ),
+  CustomAction(
+    title: "About the author",
+    routeName: AuthorsPage.routeName,
   ),
 ];

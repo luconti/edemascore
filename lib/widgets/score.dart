@@ -15,9 +15,9 @@ class ComponentScore extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: totalScore <= 1
+        color: totalScore <= 3
             ? Colors.green
-            : totalScore <= 6
+            : totalScore <= 5
                 ? Colors.orange
                 : Colors.red,
       ),
@@ -40,9 +40,9 @@ class ComponentScore extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: totalScore <= 1
+                    text: totalScore <= 3
                         ? " (low score)"
-                        : totalScore <= 6
+                        : totalScore <= 5
                             ? " (medium score)"
                             : " (high score)",
                     style: const TextStyle(
