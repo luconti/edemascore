@@ -6,13 +6,13 @@ class ComponentOptions extends StatelessWidget {
   const ComponentOptions({
     Key? key,
     required this.options,
-    required this.selectedOption,
+    required this.urlParameter,
     required this.selectOption,
   }) : super(key: key);
 
   final List<ComponentOptionInput> options;
   final void Function(int index) selectOption;
-  final int selectedOption;
+  final int urlParameter;
 
   @override
   Widget build(context) {
@@ -23,7 +23,7 @@ class ComponentOptions extends StatelessWidget {
         for (int i = 0; i < options.length; i++)
           ComponentOption(
             input: options[i],
-            isSelected: i == selectedOption,
+            isSelected: i == urlParameter,
             callback: selectOption,
             index: i,
             isLast: i == options.length - 1,

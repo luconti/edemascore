@@ -1,14 +1,16 @@
 import 'package:edema_calc/consts/actions.dart';
-import 'package:edema_calc/home.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
 import 'package:edema_calc/widgets/drawer.dart';
 import 'package:edema_calc/widgets/mobile_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class PageTemplate extends StatefulWidget {
-  const PageTemplate({Key? key, required this.page}) : super(key: key);
+  PageTemplate({Key? key, required this.page, this.lateralFlex})
+      : super(key: key);
 
   final Widget page;
+  int? lateralFlex;
   static String routeName = "/";
 
   @override
@@ -34,7 +36,8 @@ class _PageTemplateState extends State<PageTemplate> {
                 child: Row(
                   children: [
                     Flexible(
-                      flex: calculateLateralFlex(constraints.maxWidth),
+                      flex: widget.lateralFlex ??
+                          calculateLateralFlex(constraints.maxWidth),
                       child: Container(),
                     ),
                     Flexible(
@@ -45,7 +48,8 @@ class _PageTemplateState extends State<PageTemplate> {
                       ),
                     ),
                     Flexible(
-                      flex: calculateLateralFlex(constraints.maxWidth),
+                      flex: widget.lateralFlex ??
+                          calculateLateralFlex(constraints.maxWidth),
                       child: Container(),
                     ),
                   ],

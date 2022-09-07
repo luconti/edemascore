@@ -31,21 +31,21 @@ class HomePage extends StatelessWidget {
           const CustomDropdown(),
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
-            child: Consumer<SelectedOptions>(
-              builder: (context, selectedOptions, _) {
-                return Components(selectedOptions);
+            child: Consumer<UrlParameters>(
+              builder: (context, urlParameters, _) {
+                return Components(urlParameters);
               },
             ),
           ),
           Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child: Consumer<SelectedOptions>(
-                builder: (context, selectedOptions, _) {
+              child: Consumer<UrlParameters>(
+                builder: (context, urlParameters, _) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ShareButton(selectedOptions),
-                      const FeedbackButton(),
+                      ShareButton(urlParameters),
+                      FeedbackButton(link: urlParameters.feedbackLink),
                     ],
                   );
                 },

@@ -1,19 +1,21 @@
 import 'package:edema_calc/consts/components.dart';
 import 'package:flutter/material.dart';
 
-class SelectedOptions extends ChangeNotifier {
+class UrlParameters extends ChangeNotifier {
   int effacement;
   int midlineShift;
   int glucose;
   int previousStroke;
   int intervention;
+  String? feedbackLink;
 
-  SelectedOptions({
+  UrlParameters({
     this.effacement = 0,
     this.midlineShift = 0,
     this.glucose = 0,
     this.previousStroke = 0,
     this.intervention = 0,
+    this.feedbackLink,
   });
 
   int from(ComponentInput c) {
@@ -54,7 +56,7 @@ class SelectedOptions extends ChangeNotifier {
     notifyListeners();
   }
 
-  factory SelectedOptions.fromURI(RouteSettings settings) {
+  factory UrlParameters.fromURI(RouteSettings settings) {
     // map from the URL parameter possible values
     const Map<String, int> toInt = {
       "0": 0,
@@ -78,13 +80,35 @@ class SelectedOptions extends ChangeNotifier {
         toInt[route.queryParameters[ComponentInput.intervention.param]] ?? 0;
     int midlineShift =
         toInt[route.queryParameters[ComponentInput.midlineShift.param]] ?? 0;
+    String? feedbackLink = route.queryParameters["feedback"];
 
-    return SelectedOptions(
-      effacement: effacementOption > 2 ? 2 : effacementOption,
-      midlineShift: midlineShift,
-      glucose: glucoseOption > 2 ? 2 : glucoseOption,
-      previousStroke: previousStrokeOption > 2 ? 2 : previousStrokeOption,
-      intervention: interventionOption > 2 ? 2 : interventionOption,
+    return UrlParameters(
+      effacement: effacementOption > 1
+          ? 1
+          : effacementOption < 0
+              ? 0
+              : effacementOption,
+      midlineShift: midlineShift > 4
+          ? 4
+          : midlineShift < 0
+              ? 0
+              : midlineShift,
+      glucose: glucoseOption > 1
+          ? 1
+          : glucoseOption < 0
+              ? 0
+              : glucoseOption,
+      previousStroke: previousStrokeOption > 1
+          ? 1
+          : previousStrokeOption < 0
+              ? 0
+              : previousStrokeOption,
+      intervention: interventionOption > 1
+          ? 1
+          : interventionOption < 0
+              ? 0
+              : interventionOption,
+      feedbackLink: feedbackLink,
     );
   }
 }

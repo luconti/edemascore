@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ShareButton extends StatefulWidget {
-  const ShareButton(this.selectedOptions, {Key? key}) : super(key: key);
-  final SelectedOptions selectedOptions;
+  const ShareButton(this.urlParameters, {Key? key}) : super(key: key);
+  final UrlParameters urlParameters;
 
   @override
   ShareButtonState createState() => ShareButtonState();
@@ -52,7 +52,7 @@ class ShareButtonState extends State<ShareButton> {
   // build URL returns a URL that allwos pre-populating inputs when accessed
   String buildUrl() {
     List<String> params = ComponentInput.values
-        .map((c) => c.param + "=" + widget.selectedOptions.from(c).toString())
+        .map((c) => c.param + "=" + widget.urlParameters.from(c).toString())
         .toList();
     String s = "/?";
     for (var p in params) {

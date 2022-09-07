@@ -10,24 +10,53 @@ class InterventionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return PageTemplate(
-      page: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.only(top: 40, bottom: 40),
-              child: PageTitle("Recommended Interventions"),
+      lateralFlex: 0,
+      page: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.only(top: 40, bottom: 40),
+                child: PageTitle("Recommended Interventions"),
+              ),
             ),
-          ),
-          buildStrongRecommendations(),
-          const SizedBox(height: 20),
-          buildConditionalRecommendations(),
-          const SizedBox(height: 20),
-          buildNotRecommendedRecommendations(),
-          const SizedBox(height: 40),
-        ],
+            screenWidth > 700
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: screenWidth / 3 - 20,
+                        child: buildStrongRecommendations(),
+                      ),
+                      SizedBox(
+                        width: screenWidth / 3 - 20,
+                        child: buildConditionalRecommendations(),
+                      ),
+                      SizedBox(
+                        width: screenWidth / 3 - 20,
+                        child: buildNotRecommendedRecommendations(),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      buildStrongRecommendations(),
+                      const SizedBox(height: 20),
+                      buildConditionalRecommendations(),
+                      const SizedBox(height: 20),
+                      buildNotRecommendedRecommendations(),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -35,7 +64,7 @@ class InterventionsPage extends StatelessWidget {
   Widget buildNotRecommendedRecommendations() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.orange.withOpacity(0.6),
+        color: Colors.red.withOpacity(0.6),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
@@ -178,7 +207,7 @@ class InterventionsPage extends StatelessWidget {
   Widget buildConditionalRecommendations() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.6),
+        color: Colors.yellow.withOpacity(0.6),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(

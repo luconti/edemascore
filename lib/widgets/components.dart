@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 
 class Components extends StatelessWidget {
   const Components(
-    this.selectedOptions, {
+    this.urlParameters, {
     Key? key,
   }) : super(key: key);
 
-  final SelectedOptions selectedOptions;
+  final UrlParameters urlParameters;
 
   @override
   Widget build(BuildContext context) {
     // calculate total score from selected options
     int totalScore = ComponentInput.values
-        .map((c) => c.options[selectedOptions.from(c)].score)
+        .map((c) => c.options[urlParameters.from(c)].score)
         .toList()
         .reduce((sum, score) => sum + score);
 
@@ -29,7 +29,7 @@ class Components extends StatelessWidget {
             children: [
               Component(
                 input: ComponentInput.values[i],
-                selectedOptions: selectedOptions,
+                urlParameters: urlParameters,
               ),
               const Divider(),
             ],

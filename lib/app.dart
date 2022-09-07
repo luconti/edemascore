@@ -13,14 +13,14 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-  late SelectedOptions selectedOptions;
+  late UrlParameters urlParameters;
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<SelectedOptions>(
-            create: (context) => selectedOptions,
+          ChangeNotifierProvider<UrlParameters>(
+            create: (context) => urlParameters,
           ),
         ],
         builder: (context, child) {
@@ -32,7 +32,7 @@ class AppState extends State<App> {
             onGenerateRoute: (settings) {
               // instanchiate selected options
               // TODO: avoid restarting selected options everytime
-              selectedOptions = SelectedOptions.fromURI(settings);
+              urlParameters = UrlParameters.fromURI(settings);
 
               // get route name
               final route = Uri.parse(settings.name ?? "/");

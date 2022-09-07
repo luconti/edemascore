@@ -7,11 +7,11 @@ class Component extends StatelessWidget {
   const Component({
     Key? key,
     required this.input,
-    required this.selectedOptions,
+    required this.urlParameters,
   }) : super(key: key);
 
   final ComponentInput input;
-  final SelectedOptions selectedOptions;
+  final UrlParameters urlParameters;
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +55,8 @@ class Component extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10, bottom: 10),
               child: ComponentOptions(
                 options: input.options,
-                selectedOption: selectedOptions.from(input),
-                selectOption: (int i) => selectedOptions.set(input, i),
+                urlParameter: urlParameters.from(input),
+                selectOption: (int i) => urlParameters.set(input, i),
               ),
             ),
           ),
