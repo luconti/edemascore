@@ -1,6 +1,6 @@
 import 'package:edema_calc/consts/buttons.dart';
 import 'package:edema_calc/consts/home_dropdown_contents.dart';
-import 'package:edema_calc/widgets/home_dropdown_button.dart';
+import 'package:edema_calc/widgets/custom_dropdown_button.dart';
 import 'package:edema_calc/widgets/home_dropdown_content.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class _HomeDropdownState extends State<HomeDropdown> {
           children: [
             for (int i = 0; i < homeDropdownContents.length; i++)
               Expanded(
-                child: HomeDropdownButton(
+                child: CustomDropdownButton(
                   title: homeDropdownContents[i].buttonTitle,
                   isFirst: i == 0,
                   isLast: i == homeDropdownContents.length - 1,

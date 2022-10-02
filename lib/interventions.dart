@@ -13,7 +13,7 @@ class InterventionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return PageTemplate(
-      lateralFlex: 0,
+      //lateralFlex: 0,
       page: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(

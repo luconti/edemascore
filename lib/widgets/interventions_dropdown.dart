@@ -1,6 +1,6 @@
 import 'package:edema_calc/consts/buttons.dart';
 import 'package:edema_calc/consts/home_dropdown_contents.dart';
-import 'package:edema_calc/widgets/home_dropdown_button.dart';
+import 'package:edema_calc/widgets/custom_dropdown_button.dart';
 import 'package:edema_calc/widgets/home_dropdown_content.dart';
 import 'package:flutter/material.dart';
 
@@ -20,13 +20,31 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
       children: [
         Column(
           children: [
-            // title
-            HomeDropdownButton(
-                title: "title",
-                callback: () {},
-                isFirst: true,
-                isLast: false,
-                isSelected: false)
+            // extract into widget
+            Column(
+              children: [
+                // TITLE
+                CustomDropdownButton(
+                    title: "title",
+                    callback: () {},
+                    isFirst: true,
+                    isLast: false,
+                    isSelected: false),
+                // CONTENT IS ANOTHER COLUMN THAT gets displayed dinamically
+                Container(),
+              ],
+            ),
+            Column(
+              children: [
+                CustomDropdownButton(
+                    title: "title",
+                    callback: () {},
+                    isFirst: true,
+                    isLast: false,
+                    isSelected: false),
+                Container(),
+              ],
+            )
           ],
         )
         // for (int i = 0; i < dropdownInputs.length; i++)
