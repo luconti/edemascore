@@ -13,14 +13,14 @@ class DropDownInput {
 
 // TODO: ask Lucas for links for dropdowns
 
-class CustomDropdown extends StatefulWidget {
-  const CustomDropdown({Key? key}) : super(key: key);
+class HomeDropdown extends StatefulWidget {
+  const HomeDropdown({Key? key}) : super(key: key);
 
   @override
-  _CustomDropdwonState createState() => _CustomDropdwonState();
+  _HomeDropdownState createState() => _HomeDropdownState();
 }
 
-class _CustomDropdwonState extends State<CustomDropdown> {
+class _HomeDropdownState extends State<HomeDropdown> {
   int? selectedIndex;
 
   @override
@@ -31,7 +31,7 @@ class _CustomDropdwonState extends State<CustomDropdown> {
           children: [
             for (int i = 0; i < dropdownInputs.length; i++)
               Expanded(
-                child: CustomDropdownButton(
+                child: HomeDropdownButton(
                   title: dropdownInputs[i].buttonTitle,
                   isFirst: i == 0,
                   isLast: i == dropdownInputs.length - 1,
@@ -55,7 +55,7 @@ class _CustomDropdwonState extends State<CustomDropdown> {
             ? Row(
                 children: [
                   Expanded(
-                    child: CustomDropdownContent(
+                    child: HomeDropdownContent(
                       dropdownInputs[selectedIndex ?? 0].content,
                     ),
                   ),

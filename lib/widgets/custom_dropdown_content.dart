@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomDropdownContent extends StatelessWidget {
-  const CustomDropdownContent(this.child, {Key? key});
+class HomeDropdownContent extends StatelessWidget {
+  const HomeDropdownContent(this.child, {Key? key});
 
   final Widget child;
 

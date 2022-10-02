@@ -1,8 +1,8 @@
 import 'package:edema_calc/consts/buttons.dart';
 import 'package:flutter/material.dart';
 
-class CustomDropdownButton extends StatelessWidget {
-  const CustomDropdownButton({
+class HomeDropdownButton extends StatelessWidget {
+  const HomeDropdownButton({
     Key? key,
     required this.title,
     required this.callback,
