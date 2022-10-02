@@ -9,6 +9,8 @@ class CustomDropdownButton extends StatelessWidget {
     required this.isFirst,
     required this.isLast,
     required this.isSelected,
+    this.verticallyStacked = true,
+    this.mainAxisAlignment = MainAxisAlignment.center,
   }) : super(key: key);
 
   final String title;
@@ -16,6 +18,8 @@ class CustomDropdownButton extends StatelessWidget {
   final bool isFirst;
   final bool isLast;
   final bool isSelected;
+  final bool verticallyStacked;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -28,28 +32,31 @@ class CustomDropdownButton extends StatelessWidget {
           isSelected: isSelected,
           isFirst: isFirst,
           isLast: isLast,
-          verticallyStacked: false,
+          verticallyStacked: verticallyStacked,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                color: isSelected ? Colors.white : Colors.black,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: isSelected ? Colors.white : Colors.black,
+                ),
               ),
             ),
-            isSelected
-                ? const Icon(
-                    Icons.keyboard_arrow_up_rounded,
-                    color: Colors.white,
-                  )
-                : const Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: Colors.black,
-                  )
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Icon(
+                isSelected
+                    ? Icons.keyboard_arrow_up_rounded
+                    : Icons.keyboard_arrow_down_rounded,
+                color: isSelected ? Colors.white : Colors.black,
+              ),
+            )
           ],
         ),
       ),

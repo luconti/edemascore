@@ -294,16 +294,6 @@ class InterventionsPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              "Neuromonitoring:",
-              style: TextStyle(
-                fontSize: 17,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            buildBulletList([
-              "Clinicians should frequently monitor level of arousal and ipsilateral pupillary dilation in patients with supratentorial ischemic stroke at high risk for deterioration. Gradual development of midposition pupils and worsening of motor response may also indicate deterioration (Class I; Level of Evidence C)."
-            ]),
-            const Text(
               "Surgical Intervention::",
               style: TextStyle(
                 fontSize: 17,

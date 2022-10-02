@@ -1,3 +1,4 @@
+import 'package:bulleted_list/bulleted_list.dart';
 import 'package:edema_calc/consts/buttons.dart';
 import 'package:edema_calc/consts/home_dropdown_contents.dart';
 import 'package:edema_calc/widgets/custom_dropdown_button.dart';
@@ -20,18 +21,49 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
       children: [
         Column(
           children: [
-            // extract into widget
             Column(
+              // TOOD: extract pair CustomDropdownButton and Column into widget
               children: [
                 // TITLE
+                // TODO: cusomize
                 CustomDropdownButton(
-                    title: "title",
-                    callback: () {},
-                    isFirst: true,
-                    isLast: false,
-                    isSelected: false),
+                  title: "Neuromonitoring",
+                  callback: () {},
+                  isFirst: true,
+                  isLast: false,
+                  isSelected: false,
+                  verticallyStacked: true,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
                 // CONTENT IS ANOTHER COLUMN THAT gets displayed dinamically
-                Container(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    // TODO: extract pair of Text and Bulleted list into widget
+                    Text(
+                      "Class I-IIA (strong) recommendations:",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    BulletedList(
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        height: 1.1,
+                      ),
+                      bullet: Icon(
+                        Icons.add_circle_outline,
+                        size: 16,
+                        color: Colors.black,
+                      ),
+                      listItems: [
+                        "Clinicians should frequently monitor level of arousal and ipsilateral pupillary dilation in patients with supratentorial ischemic stroke at high risk for deterioration. Gradual development of midposition pupils and worsening of motor response may also indicate deterioration (Class I; Level of Evidence C).",
+                      ],
+                    ),
+                  ],
+                )
               ],
             ),
             Column(
