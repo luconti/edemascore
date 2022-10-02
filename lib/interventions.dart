@@ -1,5 +1,6 @@
 import 'package:bulleted_list/bulleted_list.dart';
 import 'package:edema_calc/template.dart';
+import 'package:edema_calc/widgets/interventions_dropdown.dart';
 import 'package:edema_calc/widgets/title.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class InterventionsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // title
             const Align(
               alignment: Alignment.center,
               child: Padding(
@@ -25,6 +27,7 @@ class InterventionsPage extends StatelessWidget {
                 child: PageTitle("Recommended Interventions"),
               ),
             ),
+            const InterventionsDropdown(),
             screenWidth > 700
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.start,

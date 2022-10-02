@@ -24,11 +24,14 @@ class HomePage extends StatelessWidget {
       page: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // page title
           const Padding(
             padding: EdgeInsets.only(top: 20, bottom: 20),
             child: PageTitle("EDEMA Score Calculator"),
           ),
+          // dropdown menu
           const HomeDropdown(),
+          // calculator
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: Consumer<UrlParameters>(
@@ -37,19 +40,21 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
+          // buttons
           Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child: Consumer<UrlParameters>(
-                builder: (context, urlParameters, _) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ShareButton(urlParameters),
-                      FeedbackButton(link: urlParameters.feedbackLink),
-                    ],
-                  );
-                },
-              ))
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
+            child: Consumer<UrlParameters>(
+              builder: (context, urlParameters, _) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ShareButton(urlParameters),
+                    FeedbackButton(link: urlParameters.feedbackLink),
+                  ],
+                );
+              },
+            ),
+          )
         ],
       ),
     );

@@ -4,7 +4,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
-List<DropDownInput> dropdownInputs = [
+class DropDownInput {
+  final String buttonTitle;
+  final Widget content;
+
+  DropDownInput({required this.buttonTitle, required this.content});
+}
+
+List<DropDownInput> homeDropdownContents = [
   DropDownInput(
     buttonTitle: "When to Use",
     content: const Text(

@@ -1,15 +1,8 @@
 import 'package:edema_calc/consts/buttons.dart';
-import 'package:edema_calc/consts/dropdownContent.dart';
-import 'package:edema_calc/widgets/custom_dropdown_button.dart';
-import 'package:edema_calc/widgets/custom_dropdown_content.dart';
+import 'package:edema_calc/consts/home_dropdown_contents.dart';
+import 'package:edema_calc/widgets/home_dropdown_button.dart';
+import 'package:edema_calc/widgets/home_dropdown_content.dart';
 import 'package:flutter/material.dart';
-
-class DropDownInput {
-  final String buttonTitle;
-  final Widget content;
-
-  DropDownInput({required this.buttonTitle, required this.content});
-}
 
 // TODO: ask Lucas for links for dropdowns
 
@@ -29,12 +22,12 @@ class _HomeDropdownState extends State<HomeDropdown> {
       children: [
         Row(
           children: [
-            for (int i = 0; i < dropdownInputs.length; i++)
+            for (int i = 0; i < homeDropdownContents.length; i++)
               Expanded(
                 child: HomeDropdownButton(
-                  title: dropdownInputs[i].buttonTitle,
+                  title: homeDropdownContents[i].buttonTitle,
                   isFirst: i == 0,
-                  isLast: i == dropdownInputs.length - 1,
+                  isLast: i == homeDropdownContents.length - 1,
                   isSelected: selectedIndex == i,
                   callback: () {
                     setState(() {
@@ -56,7 +49,7 @@ class _HomeDropdownState extends State<HomeDropdown> {
                 children: [
                   Expanded(
                     child: HomeDropdownContent(
-                      dropdownInputs[selectedIndex ?? 0].content,
+                      homeDropdownContents[selectedIndex ?? 0].content,
                     ),
                   ),
                 ],
