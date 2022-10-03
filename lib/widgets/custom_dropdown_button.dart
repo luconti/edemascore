@@ -6,10 +6,12 @@ class CustomDropdownButton extends StatelessWidget {
     Key? key,
     required this.title,
     required this.callback,
-    required this.isFirst,
-    required this.isLast,
+    this.isFirst = false,
+    this.isLast = false,
     required this.isSelected,
     this.verticallyStacked = true,
+    this.isBold = false,
+    this.showDecoration = true,
     this.mainAxisAlignment = MainAxisAlignment.center,
   }) : super(key: key);
 
@@ -20,6 +22,8 @@ class CustomDropdownButton extends StatelessWidget {
   final bool isSelected;
   final bool verticallyStacked;
   final MainAxisAlignment mainAxisAlignment;
+  final bool isBold;
+  final bool showDecoration;
 
   @override
   Widget build(BuildContext context) {
@@ -28,33 +32,36 @@ class CustomDropdownButton extends StatelessWidget {
       child: Container(
         height: buttonHeight,
         alignment: Alignment.center,
-        decoration: getButtonDecoration(
-          isSelected: isSelected,
-          isFirst: isFirst,
-          isLast: isLast,
-          verticallyStacked: verticallyStacked,
-        ),
+        decoration: showDecoration
+            ? getButtonDecoration(
+                isSelected: isSelected,
+                isFirst: isFirst,
+                isLast: isLast,
+                verticallyStacked: verticallyStacked,
+              )
+            : null,
         child: Row(
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.only(left: 5, right: 5),
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 16,
-                  color: isSelected ? Colors.white : Colors.black,
+                  fontSize: 17,
+                  color: Colors.black,
+                  fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.only(left: 5, right: 5),
               child: Icon(
                 isSelected
                     ? Icons.keyboard_arrow_up_rounded
                     : Icons.keyboard_arrow_down_rounded,
-                color: isSelected ? Colors.white : Colors.black,
+                color: Colors.black,
               ),
             )
           ],
