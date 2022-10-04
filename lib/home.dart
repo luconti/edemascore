@@ -125,5 +125,5 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget _getStickyScore(int score) {
-  return SizedBox(height: 150, child: CalculatorScore(totalScore: score));
+  return CalculatorScore(totalScore: score);
 }
