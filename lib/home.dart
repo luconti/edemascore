@@ -114,6 +114,8 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             ),
+            // sticky content source:
+            // https://jelenaaa.medium.com/sticky-header-a-listview-inside-a-listview-in-flutter-2f808fb6aeaf
             if (_isStickyOnTop) _getStickyScore(_totalScore)
           ],
         );
