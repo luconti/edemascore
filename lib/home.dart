@@ -53,13 +53,14 @@ class _HomePageState extends State<HomePage> {
               // score
               CalculatorScore(totalScore: _totalScore),
               const SizedBox(height: 20),
-              // dropdown menu
-              const HomeDropdown(),
-              const SizedBox(height: 20),
+
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      // dropdown menu
+                      const HomeDropdown(),
+                      const SizedBox(height: 20),
                       // calculator
                       Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 20),
