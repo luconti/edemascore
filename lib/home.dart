@@ -1,6 +1,6 @@
 import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/template.dart';
-import 'package:edema_calc/widgets/components.dart';
+import 'package:edema_calc/widgets/calculator.dart';
 import 'package:edema_calc/widgets/home_dropdown.dart';
 import 'package:edema_calc/widgets/custom_navigation_bar.dart';
 import 'package:edema_calc/widgets/feedbackButton.dart';
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: Consumer<UrlParameters>(
               builder: (context, urlParameters, _) {
-                return Components(urlParameters);
+                return Calculator(urlParameters);
               },
             ),
           ),

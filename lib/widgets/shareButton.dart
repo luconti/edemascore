@@ -1,5 +1,5 @@
 import 'package:edema_calc/consts/buttons.dart';
-import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -51,7 +51,7 @@ class ShareButtonState extends State<ShareButton> {
 
   // build URL returns a URL that allwos pre-populating inputs when accessed
   String buildUrl() {
-    List<String> params = ComponentInput.values
+    List<String> params = CalculatorInput.values
         .map((c) => c.param + "=" + widget.urlParameters.from(c).toString())
         .toList();
     String s = "/?";

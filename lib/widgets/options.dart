@@ -1,4 +1,4 @@
-import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/widgets/option.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class ComponentOptions extends StatelessWidget {
     required this.selectOption,
   }) : super(key: key);
 
-  final List<ComponentOptionInput> options;
+  final List<CalculatorInputOptions> options;
   final void Function(int index) selectOption;
   final int urlParameter;
 

@@ -1,4 +1,4 @@
-import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/widgets/options.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class Component extends StatelessWidget {
     required this.urlParameters,
   }) : super(key: key);
 
-  final ComponentInput input;
+  final CalculatorInput input;
   final UrlParameters urlParameters;
 
   @override

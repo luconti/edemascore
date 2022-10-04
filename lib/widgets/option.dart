@@ -1,5 +1,5 @@
 import 'package:edema_calc/consts/buttons.dart';
-import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:flutter/material.dart';
 
 class ComponentOption extends StatefulWidget {
@@ -12,7 +12,7 @@ class ComponentOption extends StatefulWidget {
     this.isLast = false,
   }) : super(key: key);
 
-  final ComponentOptionInput input;
+  final CalculatorInputOptions input;
   final int index;
   final bool isSelected;
   final void Function(int index) callback;

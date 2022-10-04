@@ -1,4 +1,4 @@
-import 'package:edema_calc/consts/components.dart';
+import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:flutter/material.dart';
 
 class UrlParameters extends ChangeNotifier {
@@ -18,37 +18,37 @@ class UrlParameters extends ChangeNotifier {
     this.feedbackLink,
   });
 
-  int from(ComponentInput c) {
+  int from(CalculatorInput c) {
     switch (c) {
-      case ComponentInput.effacement:
+      case CalculatorInput.effacement:
         return effacement;
-      case ComponentInput.midlineShift:
+      case CalculatorInput.midlineShift:
         return midlineShift;
-      case ComponentInput.glucose:
+      case CalculatorInput.glucose:
         return glucose;
-      case ComponentInput.previousStroke:
+      case CalculatorInput.previousStroke:
         return previousStroke;
-      case ComponentInput.intervention:
+      case CalculatorInput.intervention:
         return intervention;
     }
   }
 
   // set the selected option of a component input
-  void set(ComponentInput c, int newOption) {
+  void set(CalculatorInput c, int newOption) {
     switch (c) {
-      case ComponentInput.effacement:
+      case CalculatorInput.effacement:
         effacement = newOption;
         break;
-      case ComponentInput.midlineShift:
+      case CalculatorInput.midlineShift:
         midlineShift = newOption;
         break;
-      case ComponentInput.glucose:
+      case CalculatorInput.glucose:
         glucose = newOption;
         break;
-      case ComponentInput.previousStroke:
+      case CalculatorInput.previousStroke:
         previousStroke = newOption;
         break;
-      case ComponentInput.intervention:
+      case CalculatorInput.intervention:
         intervention = newOption;
         break;
     }
@@ -71,15 +71,15 @@ class UrlParameters extends ChangeNotifier {
 
     // extract from the URL the preselected option of each component
     int effacementOption =
-        toInt[route.queryParameters[ComponentInput.effacement.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInput.effacement.param]] ?? 0;
     int glucoseOption =
-        toInt[route.queryParameters[ComponentInput.glucose.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInput.glucose.param]] ?? 0;
     int previousStrokeOption =
-        toInt[route.queryParameters[ComponentInput.previousStroke.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInput.previousStroke.param]] ?? 0;
     int interventionOption =
-        toInt[route.queryParameters[ComponentInput.intervention.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInput.intervention.param]] ?? 0;
     int midlineShift =
-        toInt[route.queryParameters[ComponentInput.midlineShift.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInput.midlineShift.param]] ?? 0;
     String? feedbackLink = route.queryParameters["feedback"];
 
     return UrlParameters(
