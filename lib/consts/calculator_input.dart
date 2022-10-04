@@ -5,7 +5,7 @@ class CalculatorInputOptions {
   CalculatorInputOptions({required this.title, required this.score});
 }
 
-enum CalculatorInput {
+enum CalculatorInputValues {
   effacement,
   midlineShift,
   glucose,
@@ -13,19 +13,19 @@ enum CalculatorInput {
   intervention
 }
 
-extension CalculatorInputExtension on CalculatorInput {
+extension CalculatorInputValuesExtension on CalculatorInputValues {
   // the title that gets displayed in the UI
   String get title {
     switch (this) {
-      case CalculatorInput.effacement:
+      case CalculatorInputValues.effacement:
         return "Basilar Cistern Effacement";
-      case CalculatorInput.midlineShift:
+      case CalculatorInputValues.midlineShift:
         return "Midline Shift";
-      case CalculatorInput.glucose:
+      case CalculatorInputValues.glucose:
         return "Glucose";
-      case CalculatorInput.previousStroke:
+      case CalculatorInputValues.previousStroke:
         return "Previous Stroke";
-      case CalculatorInput.intervention:
+      case CalculatorInputValues.intervention:
         return "Intervention (tPA or thrombectomy)";
     }
   }
@@ -33,27 +33,27 @@ extension CalculatorInputExtension on CalculatorInput {
   // the description that gets displayed in the UI
   String get description {
     switch (this) {
-      case CalculatorInput.effacement:
+      case CalculatorInputValues.effacement:
         return "Was there basilar cistern effacement within 24hrs of last seen well on CT?";
-      case CalculatorInput.midlineShift:
+      case CalculatorInputValues.midlineShift:
         return "How many millimeters of midline shift were there within 24hrs of last seen well on CT?";
-      case CalculatorInput.glucose:
+      case CalculatorInputValues.glucose:
         return "What was the patient’s admission glucose (first glucose)?";
-      case CalculatorInput.previousStroke:
+      case CalculatorInputValues.previousStroke:
         return "Did the patient have a previous stroke?";
-      case CalculatorInput.intervention:
+      case CalculatorInputValues.intervention:
         return "Did the patient undergo initial intervention with either tissue plasminogen activator (tPA) or mechanical thrombectomy?";
     }
   }
 
   List<CalculatorInputOptions> get options {
     switch (this) {
-      case CalculatorInput.effacement:
+      case CalculatorInputValues.effacement:
         return [
           CalculatorInputOptions(title: "No", score: 0),
           CalculatorInputOptions(title: "Yes", score: 3),
         ];
-      case CalculatorInput.midlineShift:
+      case CalculatorInputValues.midlineShift:
         return [
           CalculatorInputOptions(title: "0", score: 0),
           CalculatorInputOptions(title: ">0 and ≤3 mm", score: 1),
@@ -61,17 +61,17 @@ extension CalculatorInputExtension on CalculatorInput {
           CalculatorInputOptions(title: ">6 and ≤9 mm", score: 4),
           CalculatorInputOptions(title: ">9 mm", score: 7),
         ];
-      case CalculatorInput.glucose:
+      case CalculatorInputValues.glucose:
         return [
           CalculatorInputOptions(title: "<150", score: 0),
           CalculatorInputOptions(title: "≥150", score: 2),
         ];
-      case CalculatorInput.previousStroke:
+      case CalculatorInputValues.previousStroke:
         return [
           CalculatorInputOptions(title: "Yes", score: 0),
           CalculatorInputOptions(title: "No", score: 1),
         ];
-      case CalculatorInput.intervention:
+      case CalculatorInputValues.intervention:
         return [
           CalculatorInputOptions(title: "Yes", score: 0),
           CalculatorInputOptions(title: "No", score: 1),
@@ -82,15 +82,15 @@ extension CalculatorInputExtension on CalculatorInput {
   // the parameter name in the URL
   String get param {
     switch (this) {
-      case CalculatorInput.effacement:
+      case CalculatorInputValues.effacement:
         return "effacement";
-      case CalculatorInput.midlineShift:
+      case CalculatorInputValues.midlineShift:
         return "midline-shift";
-      case CalculatorInput.glucose:
+      case CalculatorInputValues.glucose:
         return "glucose";
-      case CalculatorInput.previousStroke:
+      case CalculatorInputValues.previousStroke:
         return "previous-stroke";
-      case CalculatorInput.intervention:
+      case CalculatorInputValues.intervention:
         return "intervention";
     }
   }

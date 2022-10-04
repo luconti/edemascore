@@ -1,6 +1,6 @@
 import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/providers.dart';
-import 'package:edema_calc/widgets/component.dart';
+import 'package:edema_calc/widgets/calculator_input.dart';
 import 'package:edema_calc/widgets/calculator_score.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class Calculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // calculate total score from selected options
-    int totalScore = CalculatorInput.values
+    int totalScore = CalculatorInputValues.values
         .map((c) => c.options[urlParameters.from(c)].score)
         .toList()
         .reduce((sum, score) => sum + score);
@@ -24,11 +24,11 @@ class Calculator extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Divider(),
-        for (int i = 0; i < CalculatorInput.values.length; ++i)
+        for (int i = 0; i < CalculatorInputValues.values.length; ++i)
           Column(
             children: [
-              Component(
-                input: CalculatorInput.values[i],
+              CalculatorInput(
+                input: CalculatorInputValues.values[i],
                 urlParameters: urlParameters,
               ),
               const Divider(),

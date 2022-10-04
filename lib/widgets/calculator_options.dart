@@ -2,8 +2,8 @@ import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/widgets/option.dart';
 import 'package:flutter/material.dart';
 
-class ComponentOptions extends StatelessWidget {
-  const ComponentOptions({
+class CalculatorOptions extends StatelessWidget {
+  const CalculatorOptions({
     Key? key,
     required this.options,
     required this.urlParameter,

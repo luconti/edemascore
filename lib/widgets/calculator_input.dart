@@ -1,16 +1,16 @@
 import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/providers.dart';
-import 'package:edema_calc/widgets/options.dart';
+import 'package:edema_calc/widgets/calculator_options.dart';
 import 'package:flutter/material.dart';
 
-class Component extends StatelessWidget {
-  const Component({
+class CalculatorInput extends StatelessWidget {
+  const CalculatorInput({
     Key? key,
     required this.input,
     required this.urlParameters,
   }) : super(key: key);
 
-  final CalculatorInput input;
+  final CalculatorInputValues input;
   final UrlParameters urlParameters;
 
   @override
@@ -53,7 +53,7 @@ class Component extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.only(top: 10, bottom: 10),
-              child: ComponentOptions(
+              child: CalculatorOptions(
                 options: input.options,
                 urlParameter: urlParameters.from(input),
                 selectOption: (int i) => urlParameters.set(input, i),

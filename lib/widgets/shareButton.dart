@@ -51,7 +51,7 @@ class ShareButtonState extends State<ShareButton> {
 
   // build URL returns a URL that allwos pre-populating inputs when accessed
   String buildUrl() {
-    List<String> params = CalculatorInput.values
+    List<String> params = CalculatorInputValues.values
         .map((c) => c.param + "=" + widget.urlParameters.from(c).toString())
         .toList();
     String s = "/?";
