@@ -103,6 +103,15 @@ class InterventionsPage extends StatelessWidget {
               ),
               InterventionsDropdown(
                 content: InterventionsDroppdownContent(
+                    title: "Neuromonitoring",
+                    strongRecommendations: [
+                      "Clinicians should frequently monitor level of arousal and ipsilateral pupillary dilation in patients with supratentorial ischemic stroke at high risk for deterioration. Gradual development of midposition pupils and worsening of motor response may also indicate deterioration (Class I; Level of Evidence C).",
+                    ],
+                    conditionalRecommendations: [],
+                    notRecommended: []),
+              ),
+              InterventionsDropdown(
+                content: InterventionsDroppdownContent(
                     title: "Osmotic Therapy",
                     strongRecommendations: [
                       "Osmotic therapy for patients with clinical deterioration from cerebral swelling associated with cerebral infarction is reasonable (Class IIa; Level of Evidence C)."
@@ -110,16 +119,6 @@ class InterventionsPage extends StatelessWidget {
                     conditionalRecommendations: [
                       "Use of prophylactic osmotic diuretics before apparent swelling is not recommended (Class III; Level of Evidence C).",
                     ],
-                    notRecommended: []),
-              ),
-
-              InterventionsDropdown(
-                content: InterventionsDroppdownContent(
-                    title: "Neuromonitoring",
-                    strongRecommendations: [
-                      "Clinicians should frequently monitor level of arousal and ipsilateral pupillary dilation in patients with supratentorial ischemic stroke at high risk for deterioration. Gradual development of midposition pupils and worsening of motor response may also indicate deterioration (Class I; Level of Evidence C).",
-                    ],
-                    conditionalRecommendations: [],
                     notRecommended: []),
               ),
               InterventionsDropdown(
