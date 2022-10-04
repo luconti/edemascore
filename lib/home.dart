@@ -21,9 +21,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final ScrollController _mainScrollController = ScrollController();
-  final double _removableWidgetSize = 77;
-  bool _isStickyOnTop = false;
   int _totalScore = -1;
 
   @override
@@ -34,106 +31,81 @@ class _HomePageState extends State<HomePage> {
         .map((c) => c.options[widget.urlParameters.from(c)].score)
         .toList()
         .reduce((sum, score) => sum + score);
-
-    _mainScrollController.addListener(() {
-      if (_mainScrollController.offset >= _removableWidgetSize &&
-          !_isStickyOnTop) {
-        setState(() {
-          _isStickyOnTop = true;
-        });
-      } else if (_mainScrollController.offset < _removableWidgetSize &&
-          _isStickyOnTop) {
-        setState(() {
-          _isStickyOnTop = false;
-        });
-      }
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return PageTemplate(page: Consumer<UrlParameters>(
-      builder: (context, urlParameters, _) {
-        // calculate total score from selected options
-        _totalScore = CalculatorInputValues.values
-            .map((c) => c.options[urlParameters.from(c)].score)
-            .toList()
-            .reduce((sum, score) => sum + score);
-        return Stack(
-          children: [
-            ListView(
-              controller: _mainScrollController,
-              shrinkWrap: true,
-              children: [
-                // page title
-                const Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 20),
-                  child: PageTitle("EDEMA Score Calculator"),
-                ),
-                // score
-                _getStickyScore(_totalScore, _isStickyOnTop),
-                const SizedBox(height: 20),
-                // dropdown menu
-                const HomeDropdown(),
-                // calculator
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+    return PageTemplate(
+      page: Consumer<UrlParameters>(
+        builder: (context, urlParameters, _) {
+          // calculate total score from selected options
+          _totalScore = CalculatorInputValues.values
+              .map((c) => c.options[urlParameters.from(c)].score)
+              .toList()
+              .reduce((sum, score) => sum + score);
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                child: PageTitle("EDEMA Score Calculator"),
+              ),
+              // score
+              CalculatorScore(totalScore: _totalScore),
+              const SizedBox(height: 20),
+              // dropdown menu
+              const HomeDropdown(),
+              const SizedBox(height: 20),
+              Expanded(
+                child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Divider(),
-                      for (int i = 0;
-                          i < CalculatorInputValues.values.length;
-                          ++i)
-                        Column(
+                      // calculator
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CalculatorInput(
-                              input: CalculatorInputValues.values[i],
-                              urlParameters: urlParameters,
-                            ),
                             const Divider(),
+                            for (int i = 0;
+                                i < CalculatorInputValues.values.length;
+                                ++i)
+                              Column(
+                                children: [
+                                  CalculatorInput(
+                                    input: CalculatorInputValues.values[i],
+                                    urlParameters: urlParameters,
+                                  ),
+                                  const Divider(),
+                                ],
+                              ),
                           ],
                         ),
+                      ),
+                      // buttons
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: Consumer<UrlParameters>(
+                          builder: (context, urlParameters, _) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ShareButton(urlParameters),
+                                FeedbackButton(
+                                    link: urlParameters.feedbackLink),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                // buttons
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 20),
-                  child: Consumer<UrlParameters>(
-                    builder: (context, urlParameters, _) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ShareButton(urlParameters),
-                          FeedbackButton(link: urlParameters.feedbackLink),
-                        ],
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
-            // sticky content source:
-            // https://jelenaaa.medium.com/sticky-header-a-listview-inside-a-listview-in-flutter-2f808fb6aeaf
-            if (_isStickyOnTop) _getStickyScore(_totalScore, _isStickyOnTop)
-          ],
-        );
-      },
-    ));
-  }
-}
-
-Widget _getStickyScore(int score, bool isSticky) {
-  return Column(
-    children: [
-      Container(
-        height: 20,
-        color: Colors.grey[50],
+              )
+            ],
+          );
+        },
       ),
-      isSticky
-          ? SizedBox(height: 155, child: CalculatorScore(totalScore: score))
-          : CalculatorScore(totalScore: score)
-    ],
-  );
+    );
+  }
 }
