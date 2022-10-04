@@ -74,12 +74,12 @@ class _PageTemplateState extends State<PageTemplate> {
 
   int calculateCenterFlex(double screenWidth) {
     return screenWidth < 550
-        ? 16
+        ? 30
         : screenWidth < 750
-            ? 12
+            ? 13
             : screenWidth < 1000
-                ? 6
-                : 4;
+                ? 7
+                : 5;
   }
 
   int calculateLateralFlex(double screenWidth) {
