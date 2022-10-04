@@ -1,8 +1,8 @@
 import 'package:edema_calc/consts/score.dart';
 import 'package:flutter/material.dart';
 
-class ComponentScore extends StatelessWidget {
-  const ComponentScore({Key? key, required this.totalScore}) : super(key: key);
+class CalculatorScore extends StatelessWidget {
+  const CalculatorScore({Key? key, required this.totalScore}) : super(key: key);
 
   final int totalScore;
 

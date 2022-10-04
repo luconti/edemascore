@@ -1,7 +1,7 @@
 import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/widgets/component.dart';
-import 'package:edema_calc/widgets/score.dart';
+import 'package:edema_calc/widgets/calculator_score.dart';
 import 'package:flutter/material.dart';
 
 class Calculator extends StatelessWidget {
@@ -36,7 +36,7 @@ class Calculator extends StatelessWidget {
           ),
         Padding(
           padding: const EdgeInsets.only(top: 10),
-          child: ComponentScore(totalScore: totalScore),
+          child: CalculatorScore(totalScore: totalScore),
         ),
       ],
     );
