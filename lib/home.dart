@@ -22,7 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _mainScrollController = ScrollController();
-  final double _removableWidgetSize = 135;
+  final double _removableWidgetSize = 77;
   bool _isStickyOnTop = false;
   int _totalScore = -1;
 
@@ -70,11 +70,11 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.only(top: 20, bottom: 20),
                   child: PageTitle("EDEMA Score Calculator"),
                 ),
-                // dropdown menu
-                const HomeDropdown(),
-                const SizedBox(height: 20),
                 // score
                 _getStickyScore(_totalScore),
+                const SizedBox(height: 20),
+                // dropdown menu
+                const HomeDropdown(),
                 // calculator
                 Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 20),
