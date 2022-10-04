@@ -42,7 +42,9 @@ class AppState extends State<App> {
                 return MaterialPageRoute(
                   settings: settings,
                   builder: (context) {
-                    return const HomePage();
+                    return HomePage(
+                      urlParameters: urlParameters,
+                    );
                   },
                 );
               }

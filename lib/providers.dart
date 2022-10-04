@@ -18,37 +18,37 @@ class UrlParameters extends ChangeNotifier {
     this.feedbackLink,
   });
 
-  int from(CalculatorInput c) {
+  int from(CalculatorInputValues c) {
     switch (c) {
-      case CalculatorInput.effacement:
+      case CalculatorInputValues.effacement:
         return effacement;
-      case CalculatorInput.midlineShift:
+      case CalculatorInputValues.midlineShift:
         return midlineShift;
-      case CalculatorInput.glucose:
+      case CalculatorInputValues.glucose:
         return glucose;
-      case CalculatorInput.previousStroke:
+      case CalculatorInputValues.previousStroke:
         return previousStroke;
-      case CalculatorInput.intervention:
+      case CalculatorInputValues.intervention:
         return intervention;
     }
   }
 
   // set the selected option of a component input
-  void set(CalculatorInput c, int newOption) {
+  void set(CalculatorInputValues c, int newOption) {
     switch (c) {
-      case CalculatorInput.effacement:
+      case CalculatorInputValues.effacement:
         effacement = newOption;
         break;
-      case CalculatorInput.midlineShift:
+      case CalculatorInputValues.midlineShift:
         midlineShift = newOption;
         break;
-      case CalculatorInput.glucose:
+      case CalculatorInputValues.glucose:
         glucose = newOption;
         break;
-      case CalculatorInput.previousStroke:
+      case CalculatorInputValues.previousStroke:
         previousStroke = newOption;
         break;
-      case CalculatorInput.intervention:
+      case CalculatorInputValues.intervention:
         intervention = newOption;
         break;
     }
@@ -71,15 +71,19 @@ class UrlParameters extends ChangeNotifier {
 
     // extract from the URL the preselected option of each component
     int effacementOption =
-        toInt[route.queryParameters[CalculatorInput.effacement.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInputValues.effacement.param]] ??
+            0;
     int glucoseOption =
-        toInt[route.queryParameters[CalculatorInput.glucose.param]] ?? 0;
-    int previousStrokeOption =
-        toInt[route.queryParameters[CalculatorInput.previousStroke.param]] ?? 0;
-    int interventionOption =
-        toInt[route.queryParameters[CalculatorInput.intervention.param]] ?? 0;
-    int midlineShift =
-        toInt[route.queryParameters[CalculatorInput.midlineShift.param]] ?? 0;
+        toInt[route.queryParameters[CalculatorInputValues.glucose.param]] ?? 0;
+    int previousStrokeOption = toInt[route
+            .queryParameters[CalculatorInputValues.previousStroke.param]] ??
+        0;
+    int interventionOption = toInt[
+            route.queryParameters[CalculatorInputValues.intervention.param]] ??
+        0;
+    int midlineShift = toInt[
+            route.queryParameters[CalculatorInputValues.midlineShift.param]] ??
+        0;
     String? feedbackLink = route.queryParameters["feedback"];
 
     return UrlParameters(

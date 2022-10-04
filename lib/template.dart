@@ -32,28 +32,26 @@ class _PageTemplateState extends State<PageTemplate> {
             Padding(
               // shift body down by height of navigation bar
               padding: EdgeInsets.only(top: navigationBarHeight),
-              child: SingleChildScrollView(
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: widget.lateralFlex ??
-                          calculateLateralFlex(constraints.maxWidth),
-                      child: Container(),
+              child: Row(
+                children: [
+                  Flexible(
+                    flex: widget.lateralFlex ??
+                        calculateLateralFlex(constraints.maxWidth),
+                    child: Container(),
+                  ),
+                  Flexible(
+                    flex: calculateCenterFlex(constraints.maxWidth),
+                    child: SizedBox(
+                      width: constraints.maxWidth,
+                      child: widget.page,
                     ),
-                    Flexible(
-                      flex: calculateCenterFlex(constraints.maxWidth),
-                      child: SizedBox(
-                        width: constraints.maxWidth,
-                        child: widget.page,
-                      ),
-                    ),
-                    Flexible(
-                      flex: widget.lateralFlex ??
-                          calculateLateralFlex(constraints.maxWidth),
-                      child: Container(),
-                    ),
-                  ],
-                ),
+                  ),
+                  Flexible(
+                    flex: widget.lateralFlex ??
+                        calculateLateralFlex(constraints.maxWidth),
+                    child: Container(),
+                  ),
+                ],
               ),
             ),
             Positioned(
