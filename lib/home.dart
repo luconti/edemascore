@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   child: PageTitle("EDEMA Score Calculator"),
                 ),
                 // score
-                _getStickyScore(_totalScore),
+                _getStickyScore(_totalScore, _isStickyOnTop),
                 const SizedBox(height: 20),
                 // dropdown menu
                 const HomeDropdown(),
@@ -114,9 +114,9 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             ),
-            // sticky content source
+            // sticky content source:
             // https://jelenaaa.medium.com/sticky-header-a-listview-inside-a-listview-in-flutter-2f808fb6aeaf
-            if (_isStickyOnTop) _getStickyScore(_totalScore)
+            if (_isStickyOnTop) _getStickyScore(_totalScore, _isStickyOnTop)
           ],
         );
       },
@@ -124,6 +124,16 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget _getStickyScore(int score) {
-  return CalculatorScore(totalScore: score);
+Widget _getStickyScore(int score, bool isSticky) {
+  return Column(
+    children: [
+      Container(
+        height: 20,
+        color: Colors.grey[50],
+      ),
+      isSticky
+          ? SizedBox(height: 155, child: CalculatorScore(totalScore: score))
+          : CalculatorScore(totalScore: score)
+    ],
+  );
 }
