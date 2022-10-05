@@ -27,86 +27,79 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _totalScore = CalculatorInputValues.values
-        .map((c) => c.options[widget.urlParameters.from(c)].score)
-        .toList()
-        .reduce((sum, score) => sum + score);
+    _totalScore = calculateScore(widget.urlParameters);
   }
 
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
-      page: Consumer<UrlParameters>(
-        builder: (context, urlParameters, _) {
-          // calculate total score from selected options
-          _totalScore = CalculatorInputValues.values
-              .map((c) => c.options[urlParameters.from(c)].score)
-              .toList()
-              .reduce((sum, score) => sum + score);
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 20),
-                child: PageTitle("EDEMA Score Calculator"),
-              ),
-              // score
-              CalculatorScore(totalScore: _totalScore),
-              const SizedBox(height: 20),
-
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
+      // page title and score are sticky at the top
+      stickyHeader: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 20),
+            child: PageTitle("EDEMA Score Calculator"),
+          ),
+          // score
+          CalculatorScore(totalScore: _totalScore),
+          const SizedBox(height: 20),
+        ],
+      ),
+      page: Column(
+        children: [
+          // dropdown menu
+          const HomeDropdown(),
+          const SizedBox(height: 20),
+          // calculator
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Divider(),
+                for (int i = 0; i < CalculatorInputValues.values.length; ++i)
+                  Column(
                     children: [
-                      // dropdown menu
-                      const HomeDropdown(),
-                      const SizedBox(height: 20),
-                      // calculator
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Divider(),
-                            for (int i = 0;
-                                i < CalculatorInputValues.values.length;
-                                ++i)
-                              Column(
-                                children: [
-                                  CalculatorInput(
-                                    input: CalculatorInputValues.values[i],
-                                    urlParameters: urlParameters,
-                                  ),
-                                  const Divider(),
-                                ],
-                              ),
-                          ],
-                        ),
+                      Consumer<UrlParameters>(
+                        builder: (context, urlParameters, _) {
+                          return CalculatorInput(
+                            input: CalculatorInputValues.values[i],
+                            urlParameters: urlParameters,
+                          );
+                        },
                       ),
-                      // buttons
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
-                        child: Consumer<UrlParameters>(
-                          builder: (context, urlParameters, _) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ShareButton(urlParameters),
-                                FeedbackButton(
-                                    link: urlParameters.feedbackLink),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
+                      const Divider(),
                     ],
                   ),
-                ),
-              )
-            ],
-          );
-        },
+              ],
+            ),
+          ),
+          // buttons
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
+            child: Consumer<UrlParameters>(
+              builder: (context, urlParameters, _) {
+                // update score whenever the builder is called
+                _totalScore = calculateScore(urlParameters);
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ShareButton(urlParameters),
+                    FeedbackButton(link: urlParameters.feedbackLink),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  int calculateScore(UrlParameters params) {
+    return CalculatorInputValues.values
+        .map((c) => c.options[params.from(c)].score)
+        .toList()
+        .reduce((sum, score) => sum + score);
   }
 }

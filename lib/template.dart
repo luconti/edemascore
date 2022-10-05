@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class PageTemplate extends StatefulWidget {
-  PageTemplate({Key? key, required this.page, this.lateralFlex})
-      : super(key: key);
+  PageTemplate({
+    Key? key,
+    required this.page,
+    this.stickyHeader,
+    this.lateralFlex,
+  }) : super(key: key);
 
   final Widget page;
+  final Widget? stickyHeader;
   int? lateralFlex;
   static String routeName = "/";
 
@@ -32,24 +37,41 @@ class _PageTemplateState extends State<PageTemplate> {
             Padding(
               // shift body down by height of navigation bar
               padding: EdgeInsets.only(top: navigationBarHeight),
-              child: Row(
+              child: Column(
                 children: [
-                  Flexible(
-                    flex: widget.lateralFlex ??
-                        calculateLateralFlex(constraints.maxWidth),
-                    child: Container(),
-                  ),
-                  Flexible(
-                    flex: calculateCenterFlex(constraints.maxWidth),
-                    child: SizedBox(
-                      width: constraints.maxWidth,
-                      child: widget.page,
+                  // sticky header
+                  widget.stickyHeader != null
+                      ? Row(
+                          children: [
+                            lateralPadding(constraints.maxWidth),
+                            Flexible(
+                              flex: calculateCenterFlex(constraints.maxWidth),
+                              child: SizedBox(
+                                width: constraints.maxWidth,
+                                child: widget.stickyHeader ?? Container(),
+                              ),
+                            ),
+                            lateralPadding(constraints.maxWidth),
+                          ],
+                        )
+                      : Container(),
+                  // body
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Row(
+                        children: [
+                          lateralPadding(constraints.maxWidth),
+                          Flexible(
+                            flex: calculateCenterFlex(constraints.maxWidth),
+                            child: SizedBox(
+                              width: constraints.maxWidth,
+                              child: widget.page,
+                            ),
+                          ),
+                          lateralPadding(constraints.maxWidth),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(
-                    flex: widget.lateralFlex ??
-                        calculateLateralFlex(constraints.maxWidth),
-                    child: Container(),
                   ),
                 ],
               ),
@@ -69,6 +91,13 @@ class _PageTemplateState extends State<PageTemplate> {
           ],
         );
       }),
+    );
+  }
+
+  Widget lateralPadding(double maxWidth) {
+    return Flexible(
+      flex: widget.lateralFlex ?? calculateLateralFlex(maxWidth),
+      child: Container(),
     );
   }
 
