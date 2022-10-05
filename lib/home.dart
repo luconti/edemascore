@@ -41,7 +41,11 @@ class _HomePageState extends State<HomePage> {
             child: PageTitle("EDEMA Score Calculator"),
           ),
           // score
-          CalculatorScore(totalScore: _totalScore),
+          Consumer<UrlParameters>(builder: (context, params, _) {
+            // update score whenever the builder is called
+            _totalScore = calculateScore(params);
+            return CalculatorScore(totalScore: _totalScore);
+          }),
           const SizedBox(height: 20),
         ],
       ),
@@ -79,8 +83,6 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: Consumer<UrlParameters>(
               builder: (context, urlParameters, _) {
-                // update score whenever the builder is called
-                _totalScore = calculateScore(urlParameters);
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
