@@ -8,12 +8,14 @@ void main() {
 }
 
 /**
+ * DONE (need to test)
+ * - The reseracher sees only Share button. The doctors see only Feedback button.
+ * 
  * ARTHUR TODOs
- * -  Make When To Use, Pearls/Pitfalls, Why Use sticky too
- * -  Scroll whole page when mouse is not directly on top of calculator
- * -  The reseracher sees only Share button. The doctors see only Feedback button.
  * -  When clicking on share, display a popover with the option of inserting the 
  *    patient's name and feedback link
+ * -  Make When To Use, Pearls/Pitfalls, Why Use sticky too
+ * -  Scroll whole page when mouse is not directly on top of calculator
  * -  Display patient's name in the Score description
  * -  When the doctor plays around with the input, display score separate from the
  *    original score he sees when visiting the website

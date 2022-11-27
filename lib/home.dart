@@ -82,15 +82,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: Consumer<UrlParameters>(
-              builder: (context, urlParameters, _) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ShareButton(urlParameters),
-                    FeedbackButton(link: urlParameters.feedbackLink),
-                  ],
-                );
-              },
+              // display share button iff URL doesn't specify a feedback link
+              builder: (context, urlParameters, _) =>
+                  urlParameters.feedbackLink != null
+                      ? ShareButton(urlParameters)
+                      : FeedbackButton(link: urlParameters.feedbackLink),
             ),
           ),
         ],
