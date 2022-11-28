@@ -86,7 +86,9 @@ class _HomePageState extends State<HomePage> {
                             : Container(),
                         CalculatorScore(totalScore: calculateScore(params)),
                         const SizedBox(height: 10),
-                        const ClearButton(),
+                        !params.researcherView
+                            ? const ClearButton()
+                            : Container(),
                       ],
                     ),
                   )
