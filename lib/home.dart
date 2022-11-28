@@ -99,6 +99,7 @@ class _HomePageState extends State<HomePage> {
           // display share button iff URL doesn't specify a feedback link
           builder: (context, urlParameters, _) {
             return urlParameters.researcherView
+                // TODO: consume within the button
                 ? ShareButton(urlParameters)
                 : FeedbackButton(link: urlParameters.feedbackLink);
           },

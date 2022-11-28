@@ -22,12 +22,12 @@ void main() {
  * -  Display patient's name in the Score description
  * -  Make When To Use, Pearls/Pitfalls, Why Use sticky too
  * -  Scroll whole page when mouse is not directly on top of calculator
+ * -  When clicking on share, display a popover with the option of inserting the 
+ *    patient's name and feedback link
  * 
  * ARTHUR TODOs
  * -  Display a "reset" button when the user updates the calculator.
  *        - Clicking on it resets the dynamic scores and only displays static box
- * -  When clicking on share, display a popover with the option of inserting the 
- *    patient's name and feedback link
  * -  update website's icon
  * - 
  * 
