@@ -27,7 +27,7 @@ class ShareButtonState extends State<ShareButton> {
           return AlertDialog(
             title: const Text("Share the Score"),
             content: SizedBox(
-              height: 200,
+              height: 190,
               child: Column(
                 children: [
                   const SizedBox(height: 10),

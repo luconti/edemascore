@@ -3,6 +3,7 @@ import 'package:edema_calc/providers.dart';
 import 'package:edema_calc/template.dart';
 import 'package:edema_calc/widgets/calculator_input.dart';
 import 'package:edema_calc/widgets/calculator_score.dart';
+import 'package:edema_calc/widgets/clearButton.dart';
 import 'package:edema_calc/widgets/home_dropdown.dart';
 import 'package:edema_calc/widgets/feedbackButton.dart';
 import 'package:edema_calc/widgets/shareButton.dart';
@@ -38,27 +39,56 @@ class _HomePageState extends State<HomePage> {
           // dropdown menu
           const HomeDropdown(),
           const SizedBox(height: 20),
-          // original score
-          // TODO: why not consume urlParameters "within" CalculatorScore?
-          Consumer<UrlParameters>(
-            builder: (context, params, _) => Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              // don't pass patientName so score is displayed as generic
-              // TODO: display a different title for this
-              child: CalculatorScore(
-                totalScore: calculateScore(params, original: true),
-                patientName: params.roPatientName,
-              ),
-            ),
-          ),
-          // dynamic score is displayed iff the user updated the inputs
+          // original score as seen by the doctors
           Consumer<UrlParameters>(builder: (context, params, _) {
-            return params.dirty
+            return !params.researcherView
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Score for ${params.roPatientName ?? "the patient"}',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black,
+                          ),
+                        ),
+                        CalculatorScore(
+                          totalScore: calculateScore(params, original: true),
+                          patientName: params.roPatientName,
+                        ),
+                      ],
+                    ),
+                  )
+                : Container();
+          }),
+          // dynamic score is always displayed for the researcher
+          // it is displayed for the doctor only when they update the inputs
+          Consumer<UrlParameters>(builder: (context, params, _) {
+            return params.dirty || params.researcherView
                 ? Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     // don't pass patientName so score is displayed as generic
-                    // TODO: display a different title for this
-                    child: CalculatorScore(totalScore: calculateScore(params)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        params.dirty
+                            ? const Text(
+                                'Newly calculated score',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black,
+                                ),
+                              )
+                            : Container(),
+                        CalculatorScore(totalScore: calculateScore(params)),
+                        const SizedBox(height: 10),
+                        const ClearButton(),
+                      ],
+                    ),
                   )
                 : Container();
           })
@@ -99,7 +129,6 @@ class _HomePageState extends State<HomePage> {
           // display share button iff URL doesn't specify a feedback link
           builder: (context, urlParameters, _) {
             return urlParameters.researcherView
-                // TODO: consume within the button
                 ? ShareButton(urlParameters)
                 : FeedbackButton(link: urlParameters.feedbackLink);
           },
