@@ -11,23 +11,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.urlParameters}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   static String routeName = "/";
-  final UrlParameters urlParameters;
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _totalScore = -1;
-
   @override
   void initState() {
     super.initState();
-
-    _totalScore = calculateScore(widget.urlParameters);
   }
 
   @override
@@ -43,11 +38,17 @@ class _HomePageState extends State<HomePage> {
           // original score
           // TODO: why not just use a Consumer?
           // TODO: why not consume urlParameters "within" CalculatorScore?
-          CalculatorScore(
-            totalScore: _totalScore,
-            patientName: widget.urlParameters.roPatientName,
+          Consumer<UrlParameters>(
+            builder: (context, params, _) => Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              // don't pass patientName so score is displayed as generic
+              // TODO: display a different title for this
+              child: CalculatorScore(
+                totalScore: calculateScore(params, original: true),
+                patientName: params.roPatientName,
+              ),
+            ),
           ),
-          const SizedBox(height: 20),
           // dynamic score is displayed iff the user updated the inputs
           Consumer<UrlParameters>(builder: (context, params, _) {
             return params.dirty
@@ -94,21 +95,22 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: Consumer<UrlParameters>(
-              // display share button iff URL doesn't specify a feedback link
-              builder: (context, urlParameters, _) =>
-                  urlParameters.feedbackLink != null
-                      ? ShareButton(urlParameters)
-                      : FeedbackButton(link: urlParameters.feedbackLink),
-            ),
+                // display share button iff URL doesn't specify a feedback link
+                builder: (context, urlParameters, _) {
+              return urlParameters.researcherView
+                  ? ShareButton(urlParameters)
+                  : FeedbackButton(link: urlParameters.feedbackLink);
+            }),
           ),
         ],
       ),
     );
   }
 
-  int calculateScore(UrlParameters params) {
+  int calculateScore(UrlParameters params, {bool original = false}) {
     return CalculatorInputValues.values
-        .map((c) => c.options[params.from(c)].score)
+        .map((c) =>
+            c.options[original ? params.fromOriginal(c) : params.from(c)].score)
         .toList()
         .reduce((sum, score) => sum + score);
   }

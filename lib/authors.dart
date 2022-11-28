@@ -85,7 +85,7 @@ class AuthorsPage extends StatelessWidget {
                     text: "Visiting Scientist, ",
                     children: [
                       TextSpan(
-                        text: "Massachusetts Institute of Technologyr",
+                        text: "Massachusetts Institute of Technology",
                         style: TextStyle(color: Colors.black.withOpacity(0.4)),
                       )
                     ]),

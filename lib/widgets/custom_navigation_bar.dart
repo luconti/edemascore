@@ -33,7 +33,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             InkWell(
               onTap: () => onTapAction(context, HomePage.routeName),
               child: const Text(
-                "EDEMA Score",
+                "EDEMA Score Calculator",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

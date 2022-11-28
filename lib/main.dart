@@ -8,7 +8,9 @@ void main() {
 }
 
 /**
- * DONE (need to test)
+ * DONE
+ * 
+ * NEED TO TEST
  * - The reseracher sees only Share button. The doctors see only Feedback button.
  * -  Support displaying the patient name in the result
  * -  When the doctor plays around with the input, display score separate from the
@@ -17,16 +19,17 @@ void main() {
  *            - these get displayed in the original patient's result box
  *        - Rely on normal variables for the score that changes as we use the calculator
  *            - these get reset to the static variables when clickin reset or reloading.
+ * -  Display patient's name in the Score description
  * 
  * ARTHUR TODOs
- * -  Display a reset button when the user updates the calculator
+ * -  Display a "reset" button when the user updates the calculator.
+ *        - Clicking on it resets the dynamic scores and only displays static box
  * -  When clicking on share, display a popover with the option of inserting the 
  *    patient's name and feedback link
  * -  Make When To Use, Pearls/Pitfalls, Why Use sticky too
  * -  Scroll whole page when mouse is not directly on top of calculator
- * -  Display patient's name in the Score description
  * -  update website's icon
- * -  fix "technologyr" typo on biography 
+ * - 
  * 
  * HOW TO UPDATE THE WEBSITE
  * 1) Open the terminal and navigate to the Documents/edema_score folder using

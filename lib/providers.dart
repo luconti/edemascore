@@ -13,7 +13,7 @@ extension UrlParameterNameExtension on UrlParameterName {
       case UrlParameterName.feedback:
         return "feedback";
       case UrlParameterName.patient:
-        return "patient_name";
+        return "patient";
     }
   }
 }
@@ -38,6 +38,13 @@ class UrlParameters extends ChangeNotifier {
 
   // whether the user update the score
   bool dirty;
+
+  // getters
+
+  // the presence of a feedback link in the URL determines which view to display
+  bool get researcherView {
+    return feedbackLink == null;
+  }
 
   UrlParameters({
     this.roEffacement = 0,
@@ -68,6 +75,21 @@ class UrlParameters extends ChangeNotifier {
         return previousStroke;
       case CalculatorInputValues.intervention:
         return intervention;
+    }
+  }
+
+  int fromOriginal(CalculatorInputValues c) {
+    switch (c) {
+      case CalculatorInputValues.effacement:
+        return roEffacement;
+      case CalculatorInputValues.midlineShift:
+        return roMidlineShift;
+      case CalculatorInputValues.glucose:
+        return roGlucose;
+      case CalculatorInputValues.previousStroke:
+        return roPreviousStroke;
+      case CalculatorInputValues.intervention:
+        return roIntervention;
     }
   }
 
@@ -139,8 +161,10 @@ class UrlParameters extends ChangeNotifier {
     int midlineShift = toInt[
             route.queryParameters[CalculatorInputValues.midlineShift.param]] ??
         0;
-    String? feedbackLink = route.queryParameters[UrlParameterName.feedback];
-    String? patientName = route.queryParameters[UrlParameterName.patient];
+    String? feedbackLink =
+        route.queryParameters[UrlParameterName.feedback.string];
+    String? patientName =
+        route.queryParameters[UrlParameterName.patient.string];
 
     // limit the values to valid ranges
     int _effacement = effacementOption > 1
