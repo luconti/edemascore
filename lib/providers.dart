@@ -1,7 +1,34 @@
 import 'package:edema_calc/consts/calculator_input.dart';
 import 'package:flutter/material.dart';
 
+enum UrlParameterName {
+  feedback,
+  patient,
+}
+
+extension UrlParameterNameExtension on UrlParameterName {
+  // the title that gets displayed in the UI
+  String get string {
+    switch (this) {
+      case UrlParameterName.feedback:
+        return "feedback";
+      case UrlParameterName.patient:
+        return "patient_name";
+    }
+  }
+}
+
 class UrlParameters extends ChangeNotifier {
+  // read-only values from the URL
+  final int roEffacement;
+  final int roMidlineShift;
+  final int roGlucose;
+  final int roPreviousStroke;
+  final int roIntervention;
+  final String? roFeedbackLink;
+  final String? roPatientName;
+
+  // dynamic values that get updated when we interact with the calculator
   int effacement;
   int midlineShift;
   int glucose;
@@ -9,13 +36,24 @@ class UrlParameters extends ChangeNotifier {
   int intervention;
   String? feedbackLink;
 
+  // whether the user update the score
+  bool dirty;
+
   UrlParameters({
+    this.roEffacement = 0,
+    this.roMidlineShift = 0,
+    this.roGlucose = 0,
+    this.roPreviousStroke = 0,
+    this.roIntervention = 0,
+    this.roFeedbackLink,
     this.effacement = 0,
     this.midlineShift = 0,
     this.glucose = 0,
     this.previousStroke = 0,
     this.intervention = 0,
     this.feedbackLink,
+    this.dirty = false,
+    this.roPatientName,
   });
 
   int from(CalculatorInputValues c) {
@@ -53,6 +91,23 @@ class UrlParameters extends ChangeNotifier {
         break;
     }
 
+    // user has updated the score
+    dirty = true;
+
+    notifyListeners();
+  }
+
+  // reset the options to their original values
+  void reset() {
+    effacement = roEffacement;
+    midlineShift = roMidlineShift;
+    glucose = roGlucose;
+    previousStroke = roPreviousStroke;
+    intervention = roIntervention;
+
+    // score has been reset to its original value
+    dirty = false;
+
     notifyListeners();
   }
 
@@ -84,35 +139,51 @@ class UrlParameters extends ChangeNotifier {
     int midlineShift = toInt[
             route.queryParameters[CalculatorInputValues.midlineShift.param]] ??
         0;
-    String? feedbackLink = route.queryParameters["feedback"];
+    String? feedbackLink = route.queryParameters[UrlParameterName.feedback];
+    String? patientName = route.queryParameters[UrlParameterName.patient];
 
+    // limit the values to valid ranges
+    int _effacement = effacementOption > 1
+        ? 1
+        : effacementOption < 0
+            ? 0
+            : effacementOption;
+    int _midlineShift = midlineShift > 4
+        ? 4
+        : midlineShift < 0
+            ? 0
+            : midlineShift;
+    int _glucose = glucoseOption > 1
+        ? 1
+        : glucoseOption < 0
+            ? 0
+            : glucoseOption;
+    int _previousStroke = previousStrokeOption > 1
+        ? 1
+        : previousStrokeOption < 0
+            ? 0
+            : previousStrokeOption;
+    int _intervention = interventionOption > 1
+        ? 1
+        : interventionOption < 0
+            ? 0
+            : interventionOption;
+
+    // return the model
     return UrlParameters(
-      effacement: effacementOption > 1
-          ? 1
-          : effacementOption < 0
-              ? 0
-              : effacementOption,
-      midlineShift: midlineShift > 4
-          ? 4
-          : midlineShift < 0
-              ? 0
-              : midlineShift,
-      glucose: glucoseOption > 1
-          ? 1
-          : glucoseOption < 0
-              ? 0
-              : glucoseOption,
-      previousStroke: previousStrokeOption > 1
-          ? 1
-          : previousStrokeOption < 0
-              ? 0
-              : previousStrokeOption,
-      intervention: interventionOption > 1
-          ? 1
-          : interventionOption < 0
-              ? 0
-              : interventionOption,
+      roEffacement: _effacement,
+      roMidlineShift: _midlineShift,
+      roGlucose: _glucose,
+      roPreviousStroke: _previousStroke,
+      roIntervention: _intervention,
+      roFeedbackLink: feedbackLink,
+      effacement: _effacement,
+      midlineShift: _midlineShift,
+      glucose: _glucose,
+      previousStroke: _previousStroke,
+      intervention: _intervention,
       feedbackLink: feedbackLink,
+      roPatientName: patientName,
     );
   }
 }

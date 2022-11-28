@@ -36,17 +36,29 @@ class _HomePageState extends State<HomePage> {
       // page title and score are sticky at the top
       stickyHeader: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 20, bottom: 20),
-            child: PageTitle("EDEMA Score Calculator"),
-          ),
-          // score
-          Consumer<UrlParameters>(builder: (context, params, _) {
-            // update score whenever the builder is called
-            _totalScore = calculateScore(params);
-            return CalculatorScore(totalScore: _totalScore);
-          }),
           const SizedBox(height: 20),
+          // title
+          const PageTitle("EDEMA Score Calculator"),
+          const SizedBox(height: 20),
+          // original score
+          // TODO: why not just use a Consumer?
+          // TODO: why not consume urlParameters "within" CalculatorScore?
+          CalculatorScore(
+            totalScore: _totalScore,
+            patientName: widget.urlParameters.roPatientName,
+          ),
+          const SizedBox(height: 20),
+          // dynamic score is displayed iff the user updated the inputs
+          Consumer<UrlParameters>(builder: (context, params, _) {
+            return params.dirty
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    // don't pass patientName so score is displayed as generic
+                    // TODO: display a different title for this
+                    child: CalculatorScore(totalScore: calculateScore(params)),
+                  )
+                : Container();
+          })
         ],
       ),
       page: Column(

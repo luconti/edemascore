@@ -10,15 +10,21 @@ void main() {
 /**
  * DONE (need to test)
  * - The reseracher sees only Share button. The doctors see only Feedback button.
+ * -  Support displaying the patient name in the result
+ * -  When the doctor plays around with the input, display score separate from the
+ *    original score he sees when visiting the website
+ *        - Rely on "final" variables for the score that is displayed statically.
+ *            - these get displayed in the original patient's result box
+ *        - Rely on normal variables for the score that changes as we use the calculator
+ *            - these get reset to the static variables when clickin reset or reloading.
  * 
  * ARTHUR TODOs
+ * -  Display a reset button when the user updates the calculator
  * -  When clicking on share, display a popover with the option of inserting the 
  *    patient's name and feedback link
  * -  Make When To Use, Pearls/Pitfalls, Why Use sticky too
  * -  Scroll whole page when mouse is not directly on top of calculator
  * -  Display patient's name in the Score description
- * -  When the doctor plays around with the input, display score separate from the
- *    original score he sees when visiting the website
  * -  update website's icon
  * -  fix "technologyr" typo on biography 
  * 

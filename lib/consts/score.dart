@@ -18,8 +18,8 @@ class ScoreDescription {
     required this.spec,
   });
 
-  String getString() {
-    return "Given the EDEMA score above, this patient has a risk of Potentially Lethal Malignant Edema with a probability of " +
+  String getString(String? patient) {
+    return "Given the EDEMA score above, ${patient != null ? "the patient $patient" : "this patient"} has a risk of Potentially Lethal Malignant Edema with a probability of " +
         prob.toString() +
         "% (positive predictive value of " +
         ppv.toString() +

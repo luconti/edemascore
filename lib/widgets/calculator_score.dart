@@ -2,13 +2,18 @@ import 'package:edema_calc/consts/score.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorScore extends StatelessWidget {
-  const CalculatorScore({Key? key, required this.totalScore}) : super(key: key);
+  const CalculatorScore({
+    Key? key,
+    required this.totalScore,
+    this.patientName,
+  }) : super(key: key);
 
   final int totalScore;
+  final String? patientName;
 
   @override
   Widget build(BuildContext context) {
-    String description = scoreMap[totalScore]?.getString() ?? "";
+    String description = scoreMap[totalScore]?.getString(patientName) ?? "";
 
     return Container(
       alignment: Alignment.centerLeft,
