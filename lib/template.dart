@@ -10,11 +10,13 @@ class PageTemplate extends StatefulWidget {
     Key? key,
     required this.page,
     this.stickyHeader,
+    this.footer,
     this.lateralFlex,
   }) : super(key: key);
 
   final Widget page;
   final Widget? stickyHeader;
+  final Widget? footer;
   int? lateralFlex;
   static String routeName = "/";
 
@@ -39,23 +41,6 @@ class _PageTemplateState extends State<PageTemplate> {
               padding: EdgeInsets.only(top: navigationBarHeight),
               child: Column(
                 children: [
-                  // sticky header
-                  widget.stickyHeader != null
-                      ? Row(
-                          children: [
-                            lateralPadding(constraints.maxWidth),
-                            Flexible(
-                              flex: calculateCenterFlex(constraints.maxWidth),
-                              child: SizedBox(
-                                width: constraints.maxWidth,
-                                child: widget.stickyHeader ?? Container(),
-                              ),
-                            ),
-                            lateralPadding(constraints.maxWidth),
-                          ],
-                        )
-                      : Container(),
-                  // body
                   Expanded(
                     child: SingleChildScrollView(
                       child: Row(
@@ -63,9 +48,22 @@ class _PageTemplateState extends State<PageTemplate> {
                           lateralPadding(constraints.maxWidth),
                           Flexible(
                             flex: calculateCenterFlex(constraints.maxWidth),
-                            child: SizedBox(
-                              width: constraints.maxWidth,
-                              child: widget.page,
+                            child: Column(
+                              children: [
+                                // sticky header
+                                widget.stickyHeader ?? Container(),
+                                // body
+                                SizedBox(
+                                  height: constraints.maxHeight -
+                                      navigationBarHeight -
+                                      200,
+                                  child: SingleChildScrollView(
+                                    child: widget.page,
+                                  ),
+                                ),
+                                // footer
+                                widget.footer ?? Container(),
+                              ],
                             ),
                           ),
                           lateralPadding(constraints.maxWidth),

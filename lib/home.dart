@@ -35,8 +35,10 @@ class _HomePageState extends State<HomePage> {
           // title
           const PageTitle("EDEMA Score Calculator"),
           const SizedBox(height: 20),
+          // dropdown menu
+          const HomeDropdown(),
+          const SizedBox(height: 20),
           // original score
-          // TODO: why not just use a Consumer?
           // TODO: why not consume urlParameters "within" CalculatorScore?
           Consumer<UrlParameters>(
             builder: (context, params, _) => Padding(
@@ -64,9 +66,6 @@ class _HomePageState extends State<HomePage> {
       ),
       page: Column(
         children: [
-          // dropdown menu
-          const HomeDropdown(),
-          const SizedBox(height: 20),
           // calculator
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -91,18 +90,19 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          // buttons
-          Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 20),
-            child: Consumer<UrlParameters>(
-                // display share button iff URL doesn't specify a feedback link
-                builder: (context, urlParameters, _) {
-              return urlParameters.researcherView
-                  ? ShareButton(urlParameters)
-                  : FeedbackButton(link: urlParameters.feedbackLink);
-            }),
-          ),
         ],
+      ),
+      footer: // buttons
+          Padding(
+        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        child: Consumer<UrlParameters>(
+          // display share button iff URL doesn't specify a feedback link
+          builder: (context, urlParameters, _) {
+            return urlParameters.researcherView
+                ? ShareButton(urlParameters)
+                : FeedbackButton(link: urlParameters.feedbackLink);
+          },
+        ),
       ),
     );
   }
