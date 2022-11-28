@@ -27,7 +27,8 @@ class ShareButtonState extends State<ShareButton> {
           return AlertDialog(
             title: const Text("Share the Score"),
             content: SizedBox(
-              height: 190,
+              height: 200,
+              width: 200,
               child: Column(
                 children: [
                   const SizedBox(height: 10),
@@ -45,7 +46,7 @@ class ShareButtonState extends State<ShareButton> {
                     title: "Feedback link",
                     controller: feedbackTextEditingController,
                     inputFormatters: [
-                      LengthLimitingTextInputFormatter(120),
+                      LengthLimitingTextInputFormatter(300),
                       FilteringTextInputFormatter.singleLineFormatter,
                     ],
                   ),
