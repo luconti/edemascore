@@ -66,7 +66,7 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                "Strong recommendations (Class I-IIA)",
+                                "Strong recommendation",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                "Conditional Recommendations (Class IIb)",
+                                "Conditional Recommendation",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
