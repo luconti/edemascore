@@ -25,6 +25,7 @@ class UrlParameters extends ChangeNotifier {
   final int roGlucose;
   final int roPreviousStroke;
   final int roIntervention;
+  final int roNihss;
   final String? roFeedbackLink;
   final String? roPatientName;
 
@@ -34,6 +35,7 @@ class UrlParameters extends ChangeNotifier {
   int glucose;
   int previousStroke;
   int intervention;
+  int nihss;
   String? feedbackLink;
 
   // whether the user update the score
@@ -52,12 +54,14 @@ class UrlParameters extends ChangeNotifier {
     this.roGlucose = 0,
     this.roPreviousStroke = 0,
     this.roIntervention = 0,
+    this.roNihss = 0,
     this.roFeedbackLink,
     this.effacement = 0,
     this.midlineShift = 0,
     this.glucose = 0,
     this.previousStroke = 0,
     this.intervention = 0,
+    this.nihss = 0,
     this.feedbackLink,
     this.dirty = false,
     this.roPatientName,
@@ -75,6 +79,8 @@ class UrlParameters extends ChangeNotifier {
         return previousStroke;
       case CalculatorInputValues.intervention:
         return intervention;
+      case CalculatorInputValues.nihss:
+        return nihss;
     }
   }
 
@@ -90,6 +96,8 @@ class UrlParameters extends ChangeNotifier {
         return roPreviousStroke;
       case CalculatorInputValues.intervention:
         return roIntervention;
+      case CalculatorInputValues.nihss:
+        return roNihss;
     }
   }
 
@@ -111,6 +119,9 @@ class UrlParameters extends ChangeNotifier {
       case CalculatorInputValues.intervention:
         intervention = newOption;
         break;
+      case CalculatorInputValues.nihss:
+        nihss = newOption;
+        break;
     }
 
     // user has updated the score
@@ -126,6 +137,7 @@ class UrlParameters extends ChangeNotifier {
     glucose = roGlucose;
     previousStroke = roPreviousStroke;
     intervention = roIntervention;
+    nihss = roNihss;
 
     // score has been reset to its original value
     dirty = false;
@@ -161,6 +173,9 @@ class UrlParameters extends ChangeNotifier {
     int midlineShift = toInt[
             route.queryParameters[CalculatorInputValues.midlineShift.param]] ??
         0;
+    int nihssOption = toInt[
+            route.queryParameters[CalculatorInputValues.nihss.param]] ??
+        1;
     String? feedbackLink =
         route.queryParameters[UrlParameterName.feedback.string];
     String? patientName =
@@ -192,6 +207,11 @@ class UrlParameters extends ChangeNotifier {
         : interventionOption < 0
             ? 0
             : interventionOption;
+    int _nihss = nihssOption > 3
+        ? 3
+        : nihssOption < 0
+            ? 0
+            : nihssOption;
 
     // return the model
     return UrlParameters(
@@ -200,12 +220,14 @@ class UrlParameters extends ChangeNotifier {
       roGlucose: _glucose,
       roPreviousStroke: _previousStroke,
       roIntervention: _intervention,
+      roNihss: _nihss,
       roFeedbackLink: feedbackLink,
       effacement: _effacement,
       midlineShift: _midlineShift,
       glucose: _glucose,
       previousStroke: _previousStroke,
       intervention: _intervention,
+      nihss: _nihss,
       feedbackLink: feedbackLink,
       roPatientName: patientName,
     );
