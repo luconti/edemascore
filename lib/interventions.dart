@@ -2,7 +2,9 @@ import 'package:bulleted_list/bulleted_list.dart';
 import 'package:edema_calc/template.dart';
 import 'package:edema_calc/widgets/interventions_dropdown.dart';
 import 'package:edema_calc/widgets/title.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 class InterventionsPage extends StatelessWidget {
   const InterventionsPage({Key? key}) : super(key: key);
@@ -21,12 +23,36 @@ class InterventionsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // title
-              const Align(
+              Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 40, bottom: 40),
-                  child: PageTitle("Recommended Interventions"),
-                ),
+                    padding: const EdgeInsets.only(top: 40, bottom: 40),
+                    child: Column(children: [
+                      PageTitle("Recommended Interventions"),
+                      RichText(
+                        text: TextSpan(
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            height: 1.1,
+                          ),
+                          children: [
+                            const TextSpan(
+                              text: "(",
+                            ),
+                            TextSpan(
+                              text: "Cook et al., 2020",
+                              style: const TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => html.window.open(
+                                    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7272487/",
+                                    "new tab"),
+                            ),
+                            const TextSpan(text: ")"),
+                          ],
+                        ),
+                      ),
+                    ])),
               ),
               InterventionsDropdown(
                 content: InterventionsDroppdownContent(
