@@ -45,18 +45,18 @@ class CustomDropdownButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5),
+              padding: const EdgeInsets.only(left: 2, right: 1),
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: 16,
                   color: Colors.black,
                   fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5),
+              padding: const EdgeInsets.only(left: 1, right: 2),
               child: Icon(
                 isSelected
                     ? Icons.keyboard_arrow_up_rounded

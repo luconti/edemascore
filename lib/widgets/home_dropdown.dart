@@ -29,6 +29,7 @@ class _HomeDropdownState extends State<HomeDropdown> {
                   isFirst: i == 0,
                   isLast: i == homeDropdownContents.length - 1,
                   isSelected: selectedIndex == i,
+                  verticallyStacked: false,
                   callback: () {
                     setState(() {
                       if (selectedIndex == i) {

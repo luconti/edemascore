@@ -8,6 +8,17 @@ void main() {
 }
 
 /**
+ * TO UPDATE
+ * - Fix buttons in Home. They are overlapping
+ * - Fix Interventions and About the Author pages. Content should fill entire screen
+ * - Take calculator out of the box
+ *   - After, leave Newly Calculator score sticky
+ * - Help Lucas update a button
+ * - Add citation to "Interventions" page
+ * - Update edema score result description
+ * 
+ * 
+ * 
  * NEW CHANGES
  * - The reseracher sees only Share button. The doctors see only Feedback button.
  * -  Support displaying the patient name in the result
