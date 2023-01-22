@@ -9,8 +9,7 @@ void main() {
 
 /**
  * TO UPDATE
- * - Take calculator out of the box
- *   - After, leave Newly Calculator score sticky
+ * - Make score sticky
  * - Update edema score result description
  * 
  * 
@@ -18,6 +17,7 @@ void main() {
  * - Fixed the "When to Use, Pearls/Pitfalls, Why Use" buttons. They no longer
  *    overlapp on mobile
  * - Expanded Interventions and About the Author pages to fill the entire screen
+ * - Remove calculator from the boxed window
  * 
  * 
  * HOW TO UPDATE THE WEBSITE
