@@ -76,7 +76,7 @@ class _PageTemplateState extends State<PageTemplate> {
             ),
             Positioned(
               top: 0,
-              child: constraints.maxWidth > 700
+              child: constraints.maxWidth > 850
                   ? CustomNavigationBar(
                       actions: actions,
                       height: navigationBarHeight,
