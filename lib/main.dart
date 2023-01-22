@@ -23,14 +23,27 @@ void main() {
  * HOW TO UPDATE THE WEBSITE
  * 1) Open the terminal and navigate to the Documents/edema_score folder using
  *    the `cd` command
- * 2) Once you are in the edema_score folder (you can check this by running the 
- *    pwd command), open the folder in a text editor (i.e., Visual Studio Code)
- *    that we use to make changes to the website's code. You do this by executing
- *    the command "code ." 
+ * 2) This step is only necessary if Arthur made changes to his code and pushed
+ *    them to his GitHub repo. You need to "pull" these changes into your local
+ *    computer. First, you need to know the name of arthur's remote repository.
+ *    For that, run "git remote -v". You should see a list of outputs similar to
+ *    the following: 
+ *        github	git@github.com:luconti/edemascore.git (fetch)
+ *        github	git@github.com:luconti/edemascore.git (push)
+ *        origin	git@github.com:abrantesarthur/edema_calc.git (fetch)
+ *        origin	git@github.com:abrantesarthur/edema_calc.git (push)
+ *    In this case, for instance, Arthur's remote repository's name is "origin".
+ *    After figuring this out, execute "git pull origin master", where 'origin' 
+ *    is the name of Arthur's repo (it may be different for you). This command
+ *    will pull in the changes and merge them in your local code.
+ * 3) Now that you are in the edema_score folder (you can check this by running
+ *    the pwd command) and have pulled in the changes from Arthur's repo, open
+ *    the folder in a text editor (i.e., Visual Studio Code) that we use to make
+ *    changes to the website's code. You do this by executing the command "code ." 
  *        - don't forget to include the "."
- *        - code refers a program that, once executed, opens a folder of file using
+ *        - 'code' refers a program that, once executed, opens a folder or file using
  *          visual studio code
- *        - . refers to the current folder
+ *        - '.' refers to the current folder
  *        - in summary, you are saying "open the current folder in Visual Studio Code"
  * 2) Now, change the website as you wish
  *      - useful commands
