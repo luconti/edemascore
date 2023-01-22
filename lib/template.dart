@@ -55,8 +55,7 @@ class _PageTemplateState extends State<PageTemplate> {
                                 // body
                                 SizedBox(
                                   height: constraints.maxHeight -
-                                      navigationBarHeight -
-                                      200,
+                                      navigationBarHeight,
                                   child: SingleChildScrollView(
                                     child: widget.page,
                                   ),

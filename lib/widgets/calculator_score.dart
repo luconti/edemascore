@@ -15,8 +15,6 @@ class CalculatorScore extends StatelessWidget {
   Widget build(BuildContext context) {
     String description = scoreMap[totalScore]?.getString(patientName) ?? "";
 
-    print(patientName);
-
     return Container(
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.all(10),
