@@ -9,13 +9,11 @@ class PageTemplate extends StatefulWidget {
   PageTemplate({
     Key? key,
     required this.page,
-    this.stickyHeader,
     this.footer,
     this.lateralFlex,
   }) : super(key: key);
 
   final Widget page;
-  final Widget? stickyHeader;
   final Widget? footer;
   int? lateralFlex;
   static String routeName = "/";
@@ -50,17 +48,7 @@ class _PageTemplateState extends State<PageTemplate> {
                             flex: calculateCenterFlex(constraints.maxWidth),
                             child: Column(
                               children: [
-                                // sticky header
-                                widget.stickyHeader ?? Container(),
-                                // body
-                                SizedBox(
-                                  height: constraints.maxHeight -
-                                      navigationBarHeight,
-                                  child: SingleChildScrollView(
-                                    child: widget.page,
-                                  ),
-                                ),
-                                // footer
+                                widget.page,
                                 widget.footer ?? Container(),
                               ],
                             ),

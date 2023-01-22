@@ -29,8 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
-      // page title and score are sticky at the top
-      stickyHeader: Column(
+      page: Column(
         children: [
           const SizedBox(height: 20),
           // title
@@ -93,11 +92,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                 : Container();
-          })
-        ],
-      ),
-      page: Column(
-        children: [
+          }),
           // calculator
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),

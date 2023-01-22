@@ -9,18 +9,16 @@ void main() {
 
 /**
  * TO UPDATE
- * - Fix Interventions and About the Author pages. Content should fill entire screen
  * - Take calculator out of the box
  *   - After, leave Newly Calculator score sticky
- * - Help Lucas update a button
- * - Add citation to "Interventions" page
  * - Update edema score result description
- * 
  * 
  * 
  * NEW CHANGES
  * - Fixed the "When to Use, Pearls/Pitfalls, Why Use" buttons. They no longer
  *    overlapp on mobile
+ * - Expanded Interventions and About the Author pages to fill the entire screen
+ * 
  * 
  * HOW TO UPDATE THE WEBSITE
  * 1) Open the terminal and navigate to the Documents/edema_score folder using
