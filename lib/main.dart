@@ -9,7 +9,6 @@ void main() {
 
 /**
  * TO UPDATE
- * - Fix buttons in Home. They are overlapping
  * - Fix Interventions and About the Author pages. Content should fill entire screen
  * - Take calculator out of the box
  *   - After, leave Newly Calculator score sticky
@@ -20,17 +19,8 @@ void main() {
  * 
  * 
  * NEW CHANGES
- * - The reseracher sees only Share button. The doctors see only Feedback button.
- * -  Support displaying the patient name in the result
- * -  When the doctor plays around with the input, display score separate from the
- *    original score he sees when visiting the website
- * -  Display patient's name in the Score description
- * -  Make When To Use, Pearls/Pitfalls, Why Use sticky too
- * -  Scroll whole page when mouse is not directly on top of calculator
- * -  When clicking on share, display a popover with the option of inserting the 
- *    patient's name and feedback link
- * -  Display a "clear" button that allows clearning the score
- * - 
+ * - Fixed the "When to Use, Pearls/Pitfalls, Why Use" buttons. They no longer
+ *    overlapp on mobile
  * 
  * HOW TO UPDATE THE WEBSITE
  * 1) Open the terminal and navigate to the Documents/edema_score folder using
