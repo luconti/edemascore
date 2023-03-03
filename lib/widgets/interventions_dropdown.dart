@@ -81,7 +81,7 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
                                 bullet: const Icon(
                                   Icons.circle,
                                   size: 8,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                                 listItems: widget.content.strongRecommendations,
                               ),
@@ -108,7 +108,7 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
                                 bullet: const Icon(
                                   Icons.circle,
                                   size: 8,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                                 listItems:
                                     widget.content.conditionalRecommendations,
@@ -136,7 +136,7 @@ class _InterventionsDropdownState extends State<InterventionsDropdown> {
                                 bullet: const Icon(
                                   Icons.circle,
                                   size: 8,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                                 listItems: widget.content.notRecommended,
                               ),

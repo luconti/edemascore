@@ -43,7 +43,7 @@ List<DropDownInput> homeDropdownContents = [
             color: Colors.green.shade900.withOpacity(0.6),
           ),
           listItems: [
-            RichText(
+            /*RichText(
               text: TextSpan(
                 style: const TextStyle(
                   fontSize: 16,
@@ -67,7 +67,7 @@ List<DropDownInput> homeDropdownContents = [
                   TextSpan(text: ")."),
                 ],
               ),
-            ),
+            ), */
             RichText(
               text: TextSpan(
                 style: const TextStyle(

@@ -11,7 +11,6 @@ enum CalculatorInputValues {
   glucose,
   previousStroke,
   intervention,
-  nihss
 }
 
 extension CalculatorInputValuesExtension on CalculatorInputValues {
@@ -28,8 +27,6 @@ extension CalculatorInputValuesExtension on CalculatorInputValues {
         return "Previous Stroke";
       case CalculatorInputValues.intervention:
         return "Intervention (tPA or thrombectomy)";
-      case CalculatorInputValues.nihss:
-        return "NIH Stroke Scale > 15";  
     }
   }
 
@@ -46,8 +43,6 @@ extension CalculatorInputValuesExtension on CalculatorInputValues {
         return "Did the patient have a previous stroke?";
       case CalculatorInputValues.intervention:
         return "Did the patient undergo initial intervention with either tissue plasminogen activator (tPA) or mechanical thrombectomy?";
-      case CalculatorInputValues.nihss:
-        return "Did the patient have an NIH stroke scale greater than 15 on admission?";    
     }
   }
 
@@ -81,11 +76,6 @@ extension CalculatorInputValuesExtension on CalculatorInputValues {
           CalculatorInputOptions(title: "Yes", score: 0),
           CalculatorInputOptions(title: "No", score: 1),
         ];
-      case CalculatorInputValues.nihss:
-        return [
-          CalculatorInputOptions(title: "Yes", score: 3),
-          CalculatorInputOptions(title: "No", score: 0),
-        ];
     }
   }
 
@@ -102,8 +92,6 @@ extension CalculatorInputValuesExtension on CalculatorInputValues {
         return "previous-stroke";
       case CalculatorInputValues.intervention:
         return "intervention";
-      case CalculatorInputValues.nihss:
-        return "nihss";
     }
   }
 }
