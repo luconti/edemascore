@@ -64,7 +64,17 @@ void main() {
  * 6) Execute "firebase deploy" after the website is done rebuilding so you firebase
  *    uploads the updated website to edemascore.com
  * 
- * 
+ * Ai depois de terminar seus updates, da um “git commit” e depois “git push”
+O “git commit” salva as suas mudanças 
+O “git push” faz upload delas pro seu repositório no GitHub 
+Ai quando eu for fazer updates no código, eh só eu rodar “git pull” pra baixar as mudanças no seu repositório 
+O “git commit” completo seria 
+Git commit -am “message”
+“Message” eh você que decide
+Mas geralmente você coloca um one-liner descrevendo as mudanças que fez 
+Tipo 
+Git commit -am “add a new title to the website”
+
  * FLOW
  * 1) Go to Qualtrics, insert the doctor's email somewhere, and generate their
  *    customized feedback link
